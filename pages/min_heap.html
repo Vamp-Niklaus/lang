@@ -45,38 +45,92 @@ minHeap.pop_back();
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-amber-200 mb-2">PriorityQueue&lt;T&gt;</h3>
-                <p class="text-sm text-slate-300">Java's `PriorityQueue` is a Min-Heap by default.</p>
+                <p class="text-sm text-slate-300">Java's <code>PriorityQueue</code> is a Min-Heap by default. No Comparator is needed.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.PriorityQueue;
+
+PriorityQueue&lt;Integer&gt; minHeap = new PriorityQueue&lt;&gt;();
+
+// O(log N) Push
+minHeap.add(50);
+minHeap.add(10);
+minHeap.add(30);
+
+// O(1) Top (Smallest element)
+System.out.println(minHeap.peek()); // 10
+
+// O(log N) Pop
+minHeap.poll(); // removes 10</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-blue-300 mb-2">heapq</h3>
-                <p class="text-sm text-slate-300">Python's `heapq` is a Min-Heap by default.</p>
+                <p class="text-sm text-slate-300">Python's <code>heapq</code> operates on standard lists and is a Min-Heap by default.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">import heapq
+
+min_heap = []
+
+# O(log N) Push
+heapq.heappush(min_heap, 50)
+heapq.heappush(min_heap, 10)
+heapq.heappush(min_heap, 30)
+
+# O(1) Top (Smallest)
+print(min_heap[0]) # 10
+
+# O(log N) Pop
+smallest = heapq.heappop(min_heap)</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">Custom implementation required.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Custom Min-Heap Class</h3>
+                <p class="text-sm text-slate-300">Because JavaScript has no built-in heap, you must implement the binary heap logic yourself for O(log N) performance.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">class MinHeap {
+    constructor() { this.data = []; }
+    push(val) {
+        this.data.push(val);
+        this.bubbleUp(this.data.length - 1);
+    }
+    pop() {
+        if (this.data.length === 1) return this.data.pop();
+        const min = this.data[0];
+        this.data[0] = this.data.pop();
+        this.bubbleDown(0);
+        return min;
+    }
+    bubbleUp(i) {
+        while (i > 0) {
+            let p = Math.floor((i - 1) / 2);
+            if (this.data[i] >= this.data[p]) break;
+            [this.data[i], this.data[p]] = [this.data[p], this.data[i]];
+            i = p;
+        }
+    }
+    bubbleDown(i) {
+        // Implementation omitted for brevity...
+    }
+}</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

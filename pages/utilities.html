@@ -83,39 +83,70 @@ std::count(vec.begin(), vec.end(), val);
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-amber-200 mb-2">Pair Equivalent</h3>
-                <p class="text-sm text-slate-300">Java has no built-in Pair class. You usually create a custom class or use Map.Entry.</p>
+                <h3 class="text-lg font-bold text-amber-200 mb-2">No Built-In Pair/Tuple</h3>
+                <p class="text-sm text-slate-300">Java does not provide a standard Pair class. You usually create your own or use <code>Map.Entry</code>.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">// Custom class approach (Best Practice)
+class Pair {
+    int x, y;
+    Pair(int x, int y) { this.x = x; this.y = y; }
+}
+
+// Map.Entry approach (Hack)
+import java.util.AbstractMap;
+import java.util.Map;
+
+Map.Entry&lt;String, Integer&gt; pair = new AbstractMap.SimpleEntry&lt;&gt;("Key", 10);
+String first = pair.getKey();
+Integer second = pair.getValue();</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-blue-300 mb-2">Tuples</h3>
-                <p class="text-sm text-slate-300">Python tuples completely replace std::pair and std::tuple.</p>
+                <p class="text-sm text-slate-300">Python natively supports immutable tuples of any size, perfectly replacing <code>std::pair</code> and <code>std::tuple</code>.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300"># Pair
+p = ("Key", 10)
+first = p[0]
+second = p[1]
+
+# Tuple unpacking
+x, y = p
+print(x, y) # Key 10
+
+# Multi-element Tuple
+t = (1, 2, 3, 4)</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-yellow-300 mb-2">Arrays / Objects</h3>
-                <p class="text-sm text-slate-300">Use an array `[x, y]` or an object `{x, y}`.</p>
+                <p class="text-sm text-slate-300">JavaScript simulates pairs/tuples using arrays or objects, and utilizes destructuring assignment.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// Array Approach
+const p = ["Key", 10];
+const [first, second] = p; // Destructuring
+
+// Object Approach (Self-Documenting)
+const objPair = { k: "Key", v: 10 };
+console.log(objPair.k, objPair.v);</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

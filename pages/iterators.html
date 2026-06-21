@@ -78,37 +78,75 @@ typename iterator_traits&lt;Itr&gt;::value_type
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-amber-200 mb-2">Iterator&lt;T&gt;</h3>
-                <p class="text-sm text-slate-300">Used implicitly in enhanced for-loops, or explicitly for removing items while iterating.</p>
+                <p class="text-sm text-slate-300">Iterators in Java are essential when you need to <strong>remove</strong> elements safely while looping.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.ArrayList;
+import java.util.Iterator;
+
+ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(10);
+list.add(20);
+
+// Safe iteration and removal
+Iterator&lt;Integer&gt; it = list.iterator();
+while (it.hasNext()) {
+    Integer val = it.next();
+    if (val == 10) {
+        it.remove(); // Safely removes 10 from the list
+    }
+}</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-blue-300 mb-2">Generators & Iterables</h3>
+                <h3 class="text-lg font-bold text-blue-300 mb-2">Iterables & next()</h3>
+                <p class="text-sm text-slate-300">Python loops handle iterators automatically. To step manually, use <code>iter()</code> and <code>next()</code>.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">lst = [10, 20, 30]
+
+# Standard implicit iteration
+for x in lst:
+    print(x)
+
+# Explicit Iterator
+iterator = iter(lst)
+first = next(iterator) # 10
+second = next(iterator) # 20</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-yellow-300 mb-2">Symbol.iterator</h3>
+                <p class="text-sm text-slate-300">Modern JavaScript uses iterable protocols for loops.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const arr = [10, 20, 30];
+
+// Standard implicit iteration
+for (let x of arr) {
+    console.log(x);
+}
+
+// Explicit Iterator
+const iterator = arr[Symbol.iterator]();
+console.log(iterator.next().value); // 10
+console.log(iterator.next().value); // 20</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

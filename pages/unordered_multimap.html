@@ -43,18 +43,35 @@ auto range = umm.equal_range(1);
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">Use <code>HashMap&lt;K, List&lt;V&gt;&gt;</code>.</p>
+                <h3 class="text-lg font-bold text-amber-200 mb-2">HashMap&lt;K, List&lt;V&gt;&gt;</h3>
+                <p class="text-sm text-slate-300">Java requires manually mapping a Key to an <code>ArrayList</code> of Values.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
+HashMap&lt;String, List&lt;Integer&gt;&gt; multiMap = new HashMap&lt;&gt;();
+
+// O(1) Insert
+multiMap.putIfAbsent("A", new ArrayList&lt;&gt;());
+multiMap.get("A").add(1);
+multiMap.get("A").add(2);
+
+// O(1) Get all values
+List&lt;Integer&gt; vals = multiMap.getOrDefault("A", new ArrayList&lt;&gt;());
+for (int v : vals) {
+    System.out.println(v);
+}</code></pre>
             </div>
         </div>
-        
     </div>
-
-    <!-- PYTHON TAB -->
+<!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
 
         <div class="space-y-4">
@@ -73,14 +90,32 @@ d['A'].append(2)</code></pre>
         
     </div>
 
+    
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">Use <code>Map&lt;K, Array&lt;V&gt;&gt;</code>.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Map of Arrays</h3>
+                <p class="text-sm text-slate-300">Use a JavaScript <code>Map</code> where the value is an array.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const multiMap = new Map();
+
+function insert(key, val) {
+    if (!multiMap.has(key)) {
+        multiMap.set(key, []);
+    }
+    multiMap.get(key).push(val);
+}
+
+function getValues(key) {
+    return multiMap.get(key) || [];
+}
+
+insert("A", 1);
+insert("A", 2);
+
+console.log(getValues("A")); // [1, 2]</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

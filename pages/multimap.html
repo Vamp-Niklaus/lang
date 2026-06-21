@@ -50,20 +50,40 @@ for (auto it = range.first; it != range.second; ++it) {
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
                 <h3 class="text-lg font-bold text-amber-200 mb-2">TreeMap&lt;K, List&lt;V&gt;&gt;</h3>
-                <p class="text-sm text-slate-300">Map a single key to a List of values.</p>
+                <p class="text-sm text-slate-300">A sorted multimap in Java is achieved by combining a Red-Black Tree (TreeMap) with Lists.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.List;
+
+TreeMap&lt;Integer, List&lt;String&gt;&gt; multiMap = new TreeMap&lt;&gt;();
+
+// O(log N) Insert Key
+multiMap.putIfAbsent(3, new ArrayList&lt;&gt;());
+multiMap.get(3).add("C1");
+multiMap.get(3).add("C2");
+
+multiMap.putIfAbsent(1, new ArrayList&lt;&gt;());
+multiMap.get(1).add("A");
+
+// Iterate perfectly sorted by Key
+for (Integer k : multiMap.keySet()) {
+    System.out.println(k + ": " + multiMap.get(k));
+}
+// Outputs: 
+// 1: [A]
+// 3: [C1, C2]</code></pre>
             </div>
         </div>
-        
     </div>
-
-    
-    <!-- PYTHON TAB -->
+<!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">

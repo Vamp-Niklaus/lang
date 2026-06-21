@@ -45,18 +45,37 @@ auto range = ums.equal_range(5);
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">Use <code>HashMap&lt;T, Integer&gt;</code> to store frequencies.</p>
+                <h3 class="text-lg font-bold text-amber-200 mb-2">HashMap&lt;T, Integer&gt;</h3>
+                <p class="text-sm text-slate-300">Java does not have an unordered multiset. You maintain frequency counts using a <code>HashMap</code>.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.HashMap;
+
+HashMap&lt;Integer, Integer&gt; multiSet = new HashMap&lt;&gt;();
+
+// O(1) Insert
+multiSet.put(10, multiSet.getOrDefault(10, 0) + 1);
+multiSet.put(10, multiSet.getOrDefault(10, 0) + 1);
+
+// O(1) Erase one instance
+int count = multiSet.getOrDefault(10, 0);
+if (count == 1) {
+    multiSet.remove(10);
+} else if (count > 1) {
+    multiSet.put(10, count - 1);
+}
+
+// O(1) Count
+System.out.println("Occurrences of 10: " + multiSet.getOrDefault(10, 0));</code></pre>
             </div>
         </div>
-        
     </div>
-
-    <!-- PYTHON TAB -->
+<!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
 
         <div class="space-y-4">
@@ -75,14 +94,37 @@ print(c['b']) # 2</code></pre>
         
     </div>
 
+    
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">Maintain a <code>Map</code> of element counts manually.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Map as Frequency Counter</h3>
+                <p class="text-sm text-slate-300">Use a standard JavaScript <code>Map</code> to map elements to their frequencies.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const multiSet = new Map();
+
+function insert(val) {
+    multiSet.set(val, (multiSet.get(val) || 0) + 1);
+}
+
+function eraseOne(val) {
+    if (multiSet.has(val)) {
+        let count = multiSet.get(val);
+        if (count === 1) multiSet.delete(val);
+        else multiSet.set(val, count - 1);
+    }
+}
+
+function count(val) {
+    return multiSet.get(val) || 0;
+}
+
+insert(10);
+insert(10);
+eraseOne(10);
+console.log(count(10)); // Output: 1</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

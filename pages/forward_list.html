@@ -45,18 +45,40 @@ fl.erase_after(fl.begin());
 
 
     </div>
+    
     <!-- JAVA TAB -->
     <div class="tab-content hidden" id="tab-java">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">Java does not provide a singly-linked list in the standard library. You can use <code>LinkedList</code> (which is doubly-linked) or implement your own.</p>
+                <h3 class="text-lg font-bold text-amber-200 mb-2">LinkedList Node (Custom)</h3>
+                <p class="text-sm text-slate-300">Java's <code>LinkedList</code> is doubly-linked. If you strictly need a singly-linked list to save memory, you must write a Node class.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) { this.val = val; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Construct
+        ListNode head = new ListNode(10);
+        head.next = new ListNode(20);
+        head.next.next = new ListNode(30);
+
+        // O(N) Traversal
+        ListNode curr = head;
+        while (curr != null) {
+            System.out.println(curr.val);
+            curr = curr.next;
+        }
+    }
+}</code></pre>
             </div>
         </div>
-        
     </div>
-
-    <!-- PYTHON TAB -->
+<!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
 
         <div class="space-y-4">
