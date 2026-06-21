@@ -1,1 +1,25 @@
-<section class="page-view space-y-6">\n    <div class="border-b border-slate-800 pb-4">\n        <h2 class="text-2xl font-bold tracking-tight text-pink-400">Unordered Multiset</h2>\n        <p class="text-sm text-slate-400 mt-1">Hash table based multiset.</p>\n        <p class="text-xs text-slate-500 mt-2">Category: Unordered Container</p>\n    </div>\n    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">\n        <p class="text-sm text-slate-300">See the <a href="#cross_reference" class="text-indigo-400 hover:underline" onclick="navigateTo(&quot;cross_reference&quot;)">Cross-Reference Table</a> for a comprehensive list of supported methods and iterators for this container.</p>\n    </div>\n</section>
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-purple-400">Unordered Multiset</h2>
+        <p class="text-sm text-slate-400 mt-1">Hash table that allows duplicate keys.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Unordered Container</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
+            <h3 class="font-bold text-white mb-2 text-sm">Overview</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+<span class="text-slate-500">#include &lt;unordered_set&gt;</span>
+std::unordered_multiset&lt;int&gt; ums;
+
+ums.insert(5);
+ums.insert(5);
+
+ums.count(5); <span class="text-slate-500">// Returns 2</span>
+
+auto range = ums.equal_range(5);
+<span class="text-slate-500">// Elements are not sorted, but identical elements are guaranteed to be adjacent.</span>
+</pre>
+        </div>
+    </div>
+</section>

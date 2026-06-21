@@ -1,1 +1,25 @@
-<section class="page-view space-y-6">\n    <div class="border-b border-slate-800 pb-4">\n        <h2 class="text-2xl font-bold tracking-tight text-pink-400">Forward List (std::forward_list)</h2>\n        <p class="text-sm text-slate-400 mt-1">Singly-linked list.</p>\n        <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>\n    </div>\n    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">\n        <p class="text-sm text-slate-300">See the <a href="#cross_reference" class="text-indigo-400 hover:underline" onclick="navigateTo(&quot;cross_reference&quot;)">Cross-Reference Table</a> for a comprehensive list of supported methods and iterators for this container.</p>\n    </div>\n</section>
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-blue-400">Forward List (std::forward_list)</h2>
+        <p class="text-sm text-slate-400 mt-1">Singly-linked list. Memory efficient but can only be iterated forward.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
+            <h3 class="font-bold text-white mb-2 text-sm">Overview</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+<span class="text-slate-500">#include &lt;forward_list&gt;</span>
+
+std::forward_list&lt;int&gt; fl;
+
+fl.push_front(10);
+fl.pop_front();
+fl.insert_after(fl.begin(), 20);
+fl.erase_after(fl.begin());
+
+<span class="text-slate-500">// Note: No push_back or pop_back! No size()!</span>
+</pre>
+        </div>
+    </div>
+</section>

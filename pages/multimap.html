@@ -1,1 +1,30 @@
-<section class="page-view space-y-6">\n    <div class="border-b border-slate-800 pb-4">\n        <h2 class="text-2xl font-bold tracking-tight text-pink-400">Multimap (std::multimap)</h2>\n        <p class="text-sm text-slate-400 mt-1">Map that allows duplicate keys.</p>\n        <p class="text-xs text-slate-500 mt-2">Category: Associative Container</p>\n    </div>\n    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">\n        <p class="text-sm text-slate-300">See the <a href="#cross_reference" class="text-indigo-400 hover:underline" onclick="navigateTo(&quot;cross_reference&quot;)">Cross-Reference Table</a> for a comprehensive list of supported methods and iterators for this container.</p>\n    </div>\n</section>
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-green-400">Multimap (std::multimap)</h2>
+        <p class="text-sm text-slate-400 mt-1">Map that allows duplicate keys.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Associative Container</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
+            <h3 class="font-bold text-white mb-2 text-sm">Key Differences from Map</h3>
+            <p class="text-sm text-slate-300 mb-2">Because keys can be duplicated, <code>operator[]</code> is <strong>not available</strong>.</p>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+<span class="text-slate-500">#include &lt;map&gt;</span>
+std::multimap&lt;int, std::string&gt; mm;
+
+<span class="text-slate-500">// Must use insert with a pair</span>
+mm.insert({1, "One"});
+mm.insert({1, "Uno"}); <span class="text-slate-500">// Duplicate key allowed!</span>
+
+<span class="text-slate-500">// mm[1] = "Eins"; // ERROR!</span>
+
+<span class="text-slate-500">// Find elements</span>
+auto range = mm.equal_range(1);
+for (auto it = range.first; it != range.second; ++it) {
+    <span class="text-slate-500">// "One", "Uno"</span>
+}
+</pre>
+        </div>
+    </div>
+</section>

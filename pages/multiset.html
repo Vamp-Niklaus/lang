@@ -1,1 +1,42 @@
-<section class="page-view space-y-6">\n    <div class="border-b border-slate-800 pb-4">\n        <h2 class="text-2xl font-bold tracking-tight text-pink-400">Multiset (std::multiset)</h2>\n        <p class="text-sm text-slate-400 mt-1">Set that allows duplicate keys.</p>\n        <p class="text-xs text-slate-500 mt-2">Category: Associative Container</p>\n    </div>\n    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">\n        <p class="text-sm text-slate-300">See the <a href="#cross_reference" class="text-indigo-400 hover:underline" onclick="navigateTo(&quot;cross_reference&quot;)">Cross-Reference Table</a> for a comprehensive list of supported methods and iterators for this container.</p>\n    </div>\n</section>
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-green-400">Multiset (std::multiset)</h2>
+        <p class="text-sm text-slate-400 mt-1">Set that allows duplicate keys. Balanced binary search tree.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Associative Container</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
+            <h3 class="font-bold text-white mb-2 text-sm">Key Differences from Set</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+<span class="text-slate-500">#include &lt;set&gt;</span>
+std::multiset&lt;int&gt; ms;
+
+ms.insert(10);
+ms.insert(10); <span class="text-slate-500">// Duplicates allowed!</span>
+
+<span class="text-slate-500">// count() returns the number of occurrences</span>
+int n = ms.count(10); <span class="text-slate-500">// Returns 2</span>
+
+<span class="text-slate-500">// erase(val) removes ALL occurrences of val</span>
+ms.erase(10); 
+
+<span class="text-slate-500">// To erase just one occurrence:</span>
+ms.erase(ms.find(10));
+</pre>
+        </div>
+        
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
+            <h3 class="font-bold text-white mb-2 text-sm">Range Queries</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+<span class="text-slate-500">// Since duplicates exist, equal_range is very useful</span>
+auto range = ms.equal_range(10);
+<span class="text-slate-500">// range.first is lower_bound(10)</span>
+<span class="text-slate-500">// range.second is upper_bound(10)</span>
+for (auto it = range.first; it != range.second; ++it) {
+    <span class="text-slate-500">// Iterate over all elements equal to 10</span>
+}
+</pre>
+        </div>
+    </div>
+</section>
