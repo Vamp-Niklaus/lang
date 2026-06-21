@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">Static contiguous array. Size must be known at compile time.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
@@ -22,35 +41,120 @@ arr.fill(0);           <span class="text-slate-500">// Fill all with 0</span>
         </div>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>int[] arr = new int[5];</code> (Fixed-size primitive arrays)</span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">Primitive Arrays</h3>
+                <p class="text-sm text-slate-300">In Java, arrays are fixed-size collections of elements of the same type. They are highly efficient but lack dynamic resizing capabilities. Once created, their length cannot be changed.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>tuple</code> (Immutable, fixed size) or <code>list</code></span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Key Characteristics</h4>
+                    <ul class="list-disc list-inside text-sm text-slate-400 space-y-1">
+                        <li>Contiguous memory allocation</li>
+                        <li>O(1) access by index</li>
+                        <li>Fixed size (<code>.length</code>)</li>
+                        <li>Stores primitives or object references</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Time Complexities</h4>
+                    <ul class="space-y-1 text-sm text-slate-400">
+                        <li class="flex justify-between"><span>Access (Index)</span><span class="font-mono text-emerald-400">O(1)</span></li>
+                        <li class="flex justify-between"><span>Search</span><span class="font-mono text-yellow-400">O(n)</span></li>
+                        <li class="flex justify-between"><span>Insert / Delete</span><span class="font-mono text-red-400">N/A</span></li>
+                    </ul>
+                </div>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array</code> or <code>Int32Array</code> (Typed Arrays for fixed size/type)</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">// 1. Declaration and Initialization
+int[] arr = new int[5];        // Default initialized to 0
+int[] nums = {10, 20, 30};     // Initialized with values
+
+// 2. Access and Modify
+arr[0] = 5;
+int x = nums[1];               // x = 20
+
+// 3. Iteration
+for (int i = 0; i < nums.length; i++) {
+    System.out.println(nums[i]);
+}
+
+// Enhanced for-loop
+for (int num : nums) {
+    System.out.println(num);
+}
+
+// 4. Utility operations
+java.util.Arrays.sort(nums);
+java.util.Arrays.fill(arr, 9); // Fills arr with 9s</code></pre>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">Tuple / Array Module</h3>
+                <p class="text-sm text-slate-300">In Python, a standard <code>list</code> is actually a dynamic array (like std::vector). For a strictly fixed-size, immutable array, use a <code>tuple</code>. For typed, contiguous memory C-style arrays, use the <code>array</code> module.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300"># 1. Tuples (Immutable, fixed-size)
+tup = (10, 20, 30)
+# tup[0] = 15  # TypeError: tuple object does not support item assignment
+
+# 2. The 'array' module (Typed contiguous array)
+import array
+arr = array.array('i', [1, 2, 3, 4, 5]) # 'i' specifies signed integer
+
+arr[0] = 10
+print(arr[0]) # 10
+
+# Note: array.array allows append(), making it dynamic, 
+# but restricts types strictly unlike standard Python lists.</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Typed Arrays</h3>
+                <p class="text-sm text-slate-300">In JavaScript, standard Arrays are dynamic and heterogenous. To get true C++ std::array behavior (fixed-size, typed, contiguous memory), you use <strong>Typed Arrays</strong> like <code>Int32Array</code>, <code>Float64Array</code>, etc.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// 1. Declaration
+const arr = new Int32Array(5); // Fixed size of 5 integers, initialized to 0
+const nums = new Int32Array([10, 20, 30]);
+
+// 2. Access and Modify
+arr[0] = 5;
+console.log(nums[1]); // 20
+
+// 3. Size is fixed
+// arr.push(10); // TypeError: arr.push is not a function
+
+// 4. Iteration
+for (let num of nums) {
+    console.log(num);
+}
+
+// 5. Using ArrayBuffer directly
+const buffer = new ArrayBuffer(16); // 16 bytes
+const view = new Int32Array(buffer); // Maps to 4 integers</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

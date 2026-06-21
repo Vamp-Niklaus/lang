@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">Computational algorithms specifically focused on numerical operations.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Core Tools</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     
     <div class="space-y-4">
         <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
@@ -43,35 +62,50 @@ adjacent_difference(first, last, result);
         </div>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200">Java 8 Streams (<code>reduce</code>, <code>sum</code>)</span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">Streams reduce</h3>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300">Built-in <code>sum()</code>, <code>math</code> module, and <code>functools.reduce()</code></span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">int sum = list.stream().reduce(0, Integer::sum);</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array.prototype.reduce()</code></span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">Built-ins</h3>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">total = sum(lst)
+import math
+gcd_val = math.gcd(10, 5)</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">reduce</h3>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">let sum = arr.reduce((acc, val) =&gt; acc + val, 0);</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

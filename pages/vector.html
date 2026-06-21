@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">Implemented as a dynamic array. Dynamically-sized, heap-based array without explicit memory management.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
@@ -75,35 +94,138 @@ v.erase(v.begin() + 10, v.begin() + 15); <span class="text-slate-500">// Remove 
         </div>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.ArrayList&lt;T&gt;</code></span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">ArrayList&lt;T&gt;</h3>
+                <p class="text-sm text-slate-300"><code>java.util.ArrayList</code> is the exact equivalent of <code>std::vector</code>. It is a resizable array implementation of the List interface. It doubles in size when capacity is reached (amortized O(1) insertion).</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>list</code> (Dynamic arrays under the hood)</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Method Mapping</h4>
+                    <ul class="list-disc list-inside text-sm text-slate-400 space-y-1">
+                        <li><code>push_back(val)</code> &rarr; <code>add(val)</code></li>
+                        <li><code>pop_back()</code> &rarr; <code>remove(size - 1)</code></li>
+                        <li><code>operator[i]</code> &rarr; <code>get(i) / set(i, val)</code></li>
+                        <li><code>size()</code> &rarr; <code>size()</code></li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Time Complexities</h4>
+                    <ul class="space-y-1 text-sm text-slate-400">
+                        <li class="flex justify-between"><span>Access <code>get(i)</code></span><span class="font-mono text-emerald-400">O(1)</span></li>
+                        <li class="flex justify-between"><span>Add at end</span><span class="font-mono text-emerald-400">O(1)*</span></li>
+                        <li class="flex justify-between"><span>Insert at index</span><span class="font-mono text-yellow-400">O(n)</span></li>
+                    </ul>
+                </div>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array</code></span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.ArrayList;
+import java.util.Collections;
+
+ArrayList&lt;Integer&gt; vec = new ArrayList&lt;&gt;();
+
+// Add elements (Amortized O(1))
+vec.add(10);
+vec.add(20);
+
+// Insert at index (O(n))
+vec.add(0, 5);
+
+// Access and Modify (O(1))
+int val = vec.get(1);
+vec.set(1, 15);
+
+// Remove last element (O(1))
+vec.remove(vec.size() - 1);
+
+// Iteration
+for (int num : vec) {
+    System.out.println(num);
+}
+
+// Sorting
+Collections.sort(vec);</code></pre>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">List</h3>
+                <p class="text-sm text-slate-300">The standard Python <code>list</code> is implemented under the hood as a dynamic array of pointers. It grows automatically when full and provides amortized O(1) appends, exactly like a C++ vector.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">vec = []
+
+# Append elements (Amortized O(1))
+vec.append(10)
+vec.append(20)
+
+# Insert at index (O(n))
+vec.insert(0, 5)
+
+# Access and Modify (O(1))
+val = vec[1]
+vec[1] = 15
+
+# Remove last element (O(1))
+last_val = vec.pop()
+
+# Iteration
+for num in vec:
+    print(num)
+    
+# Sorting (In-place)
+vec.sort()</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Array</h3>
+                <p class="text-sm text-slate-300">The standard JavaScript <code>Array</code> functions as a dynamic array. Modern V8 engines optimize continuous arrays of the same type to be contiguous memory blocks, behaving identically to std::vector.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">let vec = [];
+
+// Append elements (O(1))
+vec.push(10);
+vec.push(20);
+
+// Insert at index (O(n))
+vec.splice(0, 0, 5);
+
+// Access and Modify (O(1))
+let val = vec[1];
+vec[1] = 15;
+
+// Remove last element (O(1))
+let lastVal = vec.pop();
+
+// Iteration
+for (let num of vec) {
+    console.log(num);
+}
+
+// Map / Filter
+let doubled = vec.map(x =&gt; x * 2);</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

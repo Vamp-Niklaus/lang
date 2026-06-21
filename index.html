@@ -268,6 +268,33 @@
         // Listen for hash changes
         window.addEventListener('hashchange', loadPage);
 
+        // Tab Switching Logic
+        window.switchTab = function(btn, tabId) {
+            const parent = btn.closest('.page-view');
+            if (!parent) return;
+
+            // Reset all buttons
+            parent.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('bg-slate-700', 'text-white', 'border-b-2', 'border-indigo-400');
+                b.classList.add('text-slate-400', 'hover:bg-slate-700/50', 'hover:text-white');
+            });
+
+            // Activate clicked button
+            btn.classList.add('bg-slate-700', 'text-white', 'border-b-2', 'border-indigo-400');
+            btn.classList.remove('text-slate-400', 'hover:bg-slate-700/50', 'hover:text-white');
+
+            // Hide all tab contents
+            parent.querySelectorAll('.tab-content').forEach(c => {
+                c.classList.add('hidden');
+            });
+
+            // Show selected tab content
+            const activeTab = parent.querySelector('#tab-' + tabId);
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+            }
+        };
+
         // Load initial page on startup
         document.addEventListener('DOMContentLoaded', loadPage);
     </script>

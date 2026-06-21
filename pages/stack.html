@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">Adapter template providing a LIFO specialized interface.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Container Adapter</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-4">
         <p class="text-sm text-slate-300">The <code>std::stack</code> template isn't a separate data structure. It is an <strong>adapter template</strong>, which provides a specialized interface to an existing template (by default, built from deques).</p>
         <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
@@ -26,35 +45,84 @@ s.pop();
 </pre>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.Stack&lt;T&gt;</code> or <code>java.util.ArrayDeque&lt;T&gt;</code> (preferred)</span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">ArrayDeque&lt;T&gt; / Stack&lt;T&gt;</h3>
+                <p class="text-sm text-slate-300">While <code>java.util.Stack</code> exists, it is considered legacy and is synchronized (slower). The officially recommended equivalent for <code>std::stack</code> is using <code>java.util.ArrayDeque</code>.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>list</code> (using <code>append()</code> and <code>pop()</code>)</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.ArrayDeque;
+import java.util.Deque;
+
+Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;();
+
+// O(1) Push
+stack.push(10);
+stack.push(20);
+
+// O(1) Top
+int topVal = stack.peek(); // 20
+
+// O(1) Pop
+stack.pop(); // Returns and removes 20</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array</code> (using <code>push()</code> and <code>pop()</code>)</span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">list</h3>
+                <p class="text-sm text-slate-300">A standard Python list works perfectly as a stack. Since it's a dynamic array, appending and popping from the end are O(1) operations.</p>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">stack = []
+
+# O(1) Push
+stack.append(10)
+stack.append(20)
+
+# O(1) Top
+top_val = stack[-1] # 20
+
+# O(1) Pop
+popped = stack.pop() # Returns and removes 20</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Array</h3>
+                <p class="text-sm text-slate-300">A standard JavaScript Array provides built-in <code>push</code> and <code>pop</code> methods that operate in O(1) time at the end of the array.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">let stack = [];
+
+// O(1) Push
+stack.push(10);
+stack.push(20);
+
+// O(1) Top
+let topVal = stack[stack.length - 1]; // 20
+
+// O(1) Pop
+let popped = stack.pop(); // Returns and removes 20</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

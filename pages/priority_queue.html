@@ -3,6 +3,25 @@
         <h2 class="text-2xl font-bold tracking-tight text-indigo-400">Priority Queue (std::priority_queue)</h2>
         <p class="text-sm text-slate-400 mt-1">Implemented as a heap.</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
         <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
             <li><strong>Insert/Delete Max:</strong> O(log n)</li>
@@ -20,35 +39,79 @@ pq.empty();  <span class="text-slate-500">// Check if the priority queue is empt
 </pre>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.PriorityQueue&lt;T&gt;</code> (Min-heap by default)</span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">PriorityQueue&lt;T&gt;</h3>
+                <p class="text-sm text-slate-300"><code>java.util.PriorityQueue</code> is implemented as a Priority Heap. Note: Unlike C++ which defaults to a Max-Heap, Java defaults to a <strong>Min-Heap</strong>. To get a Max-Heap, you must pass <code>Collections.reverseOrder()</code>.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>heapq</code> module (Min-heap by default)</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.PriorityQueue;
+import java.util.Collections;
+
+// MIN-HEAP (Default)
+PriorityQueue&lt;Integer&gt; minHeap = new PriorityQueue&lt;&gt;();
+
+// MAX-HEAP (Like C++ default)
+PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+
+// O(log N) Push
+maxHeap.add(10);
+maxHeap.add(20);
+
+// O(1) Top
+int top = maxHeap.peek(); // 20
+
+// O(log N) Pop
+maxHeap.poll(); // removes 20</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300">No built-in. Must implement a custom binary heap.</span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">heapq</h3>
+                <p class="text-sm text-slate-300">Python provides the <code>heapq</code> module which operates on a standard list. Like Java, it implements a <strong>Min-Heap</strong> by default. To simulate a Max-Heap, multiply numeric values by -1 before pushing.</p>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">import heapq
+
+# MIN-HEAP (Default)
+min_heap = []
+heapq.heappush(min_heap, 10)
+heapq.heappush(min_heap, 20)
+top = min_heap[0] # 10
+heapq.heappop(min_heap)
+
+# MAX-HEAP (Simulated with negatives)
+max_heap = []
+heapq.heappush(max_heap, -10)
+heapq.heappush(max_heap, -20)
+
+top = -max_heap[0] # 20</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">No Built-In Equivalent</h3>
+                <p class="text-sm text-slate-300">JavaScript does not have a built-in Priority Queue. You must implement your own binary heap class or use an external library like <code>@datastructures-js/priority-queue</code>.</p>
+            </div>
+        </div>
+        
+    </div>
 </section>

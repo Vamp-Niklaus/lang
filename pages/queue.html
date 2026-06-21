@@ -3,6 +3,25 @@
         <h2 class="text-2xl font-bold tracking-tight text-rose-400">Queue (std::queue)</h2>
         <p class="text-sm text-slate-400 mt-1">Implemented as a deque (double-ended queue) by default. FIFO structure.</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
         <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
             <li><strong>Enqueue/Dequeue/Front:</strong> O(1)</li>
@@ -19,35 +38,83 @@ q.empty();  <span class="text-slate-500">// Check if the queue is empty - O(1)</
 </pre>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.Queue&lt;T&gt;</code> (Interface) implemented by <code>LinkedList</code> or <code>ArrayDeque</code></span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">Queue&lt;T&gt; (ArrayDeque)</h3>
+                <p class="text-sm text-slate-300">In Java, <code>Queue</code> is an interface. You typically instantiate it using an <code>ArrayDeque</code> (faster) or a <code>LinkedList</code>.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>queue.Queue</code> or <code>collections.deque</code> (preferred for performance)</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.ArrayDeque;
+import java.util.Queue;
+
+Queue&lt;Integer&gt; q = new ArrayDeque&lt;&gt;();
+
+// O(1) Push
+q.offer(10); // or q.add(10)
+
+// O(1) Front
+int frontVal = q.peek();
+
+// O(1) Pop
+q.poll(); // Returns and removes 10</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array</code> (using <code>push()</code> and <code>shift()</code>) - note: <code>shift()</code> is O(N).</span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">collections.deque</h3>
+                <p class="text-sm text-slate-300">Do NOT use a standard <code>list</code> for a queue, as <code>pop(0)</code> is O(N). Instead, use <code>collections.deque</code> which provides O(1) pop from the left.</p>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">from collections import deque
+
+q = deque()
+
+# O(1) Push
+q.append(10)
+
+# O(1) Front
+front_val = q[0]
+
+# O(1) Pop
+popped = q.popleft()</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Array (Warning: O(N) Pop)</h3>
+                <p class="text-sm text-slate-300">JavaScript lacks a built-in Queue. Using an Array with <code>push()</code> and <code>shift()</code> works, but <code>shift()</code> is an O(N) operation. For high-performance needs, you must build a custom linked-list queue.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">let q = [];
+
+// Push
+q.push(10);
+
+// Front
+let frontVal = q[0];
+
+// Pop (O(N) operation!)
+let popped = q.shift();</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

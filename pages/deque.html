@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">Double-ended queue. Similar to vector but efficient at both ends.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-4">
         <p class="text-sm text-slate-300">Deques offer a similar interface to vectors, but additionally provide efficient insertion and deletion at the front of the data structure. However, be aware that deques are <strong>not guaranteed to be implemented internally as contiguous arrays</strong>.</p>
         
@@ -20,35 +39,92 @@ d.pop_front();    <span class="text-slate-500">// O(1) front deletion</span>
         <p class="text-sm text-slate-300">See the <a href="#cross_reference" class="text-indigo-400 hover:underline" onclick="navigateTo('cross_reference')">Cross-Reference Table</a> for a comprehensive list of supported methods and iterators.</p>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.ArrayDeque&lt;T&gt;</code></span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">ArrayDeque&lt;T&gt;</h3>
+                <p class="text-sm text-slate-300"><code>java.util.ArrayDeque</code> provides dynamic array-backed double-ended queue capabilities. It is generally faster than LinkedList when used as a stack or queue, and provides amortized O(1) operations at both ends.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>collections.deque</code></span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.ArrayDeque;
+import java.util.Deque;
+
+Deque&lt;Integer&gt; dq = new ArrayDeque&lt;&gt;();
+
+// Insert at both ends O(1)*
+dq.addLast(20);  // same as push_back
+dq.addFirst(10); // same as push_front
+
+// Access ends O(1)
+int first = dq.peekFirst();
+int last = dq.peekLast();
+
+// Remove ends O(1)
+dq.pollFirst();  // same as pop_front
+dq.pollLast();   // same as pop_back</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array</code> (using <code>push/pop</code> and <code>shift/unshift</code>)</span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">collections.deque</h3>
+                <p class="text-sm text-slate-300">Python's <code>deque</code> is implemented as a doubly-linked list of blocks. It excels at fast O(1) appends and pops from both ends, making it the perfect equivalent for C++ deque/list operations.</p>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">from collections import deque
+
+dq = deque()
+
+# Insert O(1)
+dq.append(20)      # push_back
+dq.appendleft(10)  # push_front
+
+# Access O(1)
+first = dq[0]
+last = dq[-1]
+
+# Remove O(1)
+dq.popleft()       # pop_front
+dq.pop()           # pop_back</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Array (Using shift/unshift)</h3>
+                <p class="text-sm text-slate-300">JavaScript does not have a dedicated deque. You use the standard Array object. However, note that <code>shift()</code> and <code>unshift()</code> (operating at the front) are <strong>O(n)</strong> operations because the array memory must be re-indexed.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">let dq = [];
+
+// Insert
+dq.push(20);      // push_back (O(1))
+dq.unshift(10);   // push_front (O(n) - Be careful!)
+
+// Access
+let first = dq[0];
+let last = dq[dq.length - 1];
+
+// Remove
+dq.shift();       // pop_front (O(n) - Be careful!)
+dq.pop();         // pop_back (O(1))</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

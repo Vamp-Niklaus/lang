@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">Doubly-linked list. Fast insertions and deletions anywhere.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 md:col-span-2">
@@ -36,35 +55,89 @@ l.reverse();                  <span class="text-slate-500">// Reverse the list</
         </div>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.LinkedList&lt;T&gt;</code></span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">LinkedList&lt;T&gt;</h3>
+                <p class="text-sm text-slate-300"><code>java.util.LinkedList</code> is a pure doubly-linked list implementation. Elements are not stored continuously, meaning memory overhead per node is higher, but insertions/deletions in the middle of the list via Iterator are O(1).</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300"><code>collections.deque</code> (Closest to doubly linked list)</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.LinkedList;
+import java.util.ListIterator;
+
+LinkedList&lt;Integer&gt; list = new LinkedList&lt;&gt;();
+list.addLast(20);
+list.addFirst(10);
+
+// O(n) Access - Unlike ArrayDeque, indexing requires traversal
+int val = list.get(1);
+
+// O(1) insertion via iterator
+ListIterator&lt;Integer&gt; it = list.listIterator();
+if (it.hasNext()) {
+    it.next();
+    it.add(15); // Inserts right after current node
+}</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300">No built-in. Use <code>Array</code> or implement a custom Node-based linked list.</span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">collections.deque</h3>
+                <p class="text-sm text-slate-300">Python does not have a strict doubly-linked list standard library class that exposes internal node manipulation. <code>collections.deque</code> is the closest equivalent and provides O(1) front/back insertions.</p>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">from collections import deque
+
+lst = deque()
+lst.append(10)      # back
+lst.appendleft(5)   # front
+
+# Middle insertion is O(n) because Python deque 
+# doesn't expose node iterators directly.
+lst.insert(1, 7)</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Custom Implementation</h3>
+                <p class="text-sm text-slate-300">JavaScript has no built-in linked list. If you truly need O(1) middle insertions, you must write a custom Node class.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">class Node {
+    constructor(val) {
+        this.val = val;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class DoublyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+    
+    // ... custom logic ...
+}</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

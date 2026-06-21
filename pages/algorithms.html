@@ -4,6 +4,25 @@
         <p class="text-sm text-slate-400 mt-1">A comprehensive suite of functions operating on ranges of elements via iterators.</p>
         <p class="text-xs text-slate-500 mt-2">Category: Core Tools</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     
     <div class="space-y-6">
         <!-- Query Algorithms -->
@@ -85,35 +104,79 @@
         </div>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.Collections</code> methods (<code>sort</code>, <code>binarySearch</code>) and Java 8 <code>java.util.stream.Stream</code></span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">Collections & Streams</h3>
+                <p class="text-sm text-slate-300">Java provides `java.util.Collections` for standard algorithms like sorting and searching. Java 8 Streams provide equivalents to `std::transform`, `std::count_if`, etc.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300">Built-in functions (<code>sorted()</code>, <code>max()</code>), <code>itertools</code> module, and <code>bisect</code> module</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.Collections;
+import java.util.Arrays;
+
+// Sort
+Collections.sort(list);
+Arrays.sort(arr);
+
+// Binary Search
+int idx = Collections.binarySearch(list, 10);
+
+// Reverse
+Collections.reverse(list);</code></pre>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300"><code>Array.prototype</code> methods (<code>sort</code>, <code>find</code>, <code>includes</code>)</span>
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">Built-ins & itertools</h3>
+                <p class="text-sm text-slate-300">Python relies heavily on built-in functions (`sorted()`, `reversed()`, `max()`) and the `itertools` module.</p>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">import bisect
+
+# Sort
+lst.sort()       # In-place
+new_lst = sorted(lst) # Returns new list
+
+# Binary Search
+idx = bisect.bisect_left(lst, 10)
+
+# Reverse
+lst.reverse()</code></pre>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Array.prototype</h3>
+                <p class="text-sm text-slate-300">JavaScript attaches algorithm equivalents directly to the Array prototype.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// Sort (Requires comparator for numbers!)
+arr.sort((a, b) =&gt; a - b);
+
+// Find
+let val = arr.find(x =&gt; x > 10);
+
+// Reverse
+arr.reverse();</code></pre>
+            </div>
+        </div>
+        
+    </div>
 </section>

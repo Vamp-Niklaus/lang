@@ -3,6 +3,25 @@
         <h2 class="text-2xl font-bold tracking-tight text-emerald-400">Set (std::set)</h2>
         <p class="text-sm text-slate-400 mt-1">Implemented as a balanced binary search tree (Red-Black Tree).</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
         <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
             <li><strong>Insert/Delete/Search:</strong> O(log n)</li>
@@ -19,35 +38,87 @@ s.size();    <span class="text-slate-500">// Get the number of elements - O(1)</
 </pre>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.TreeSet&lt;T&gt;</code> (Red-Black tree, sorted)</span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">TreeSet&lt;T&gt;</h3>
+                <p class="text-sm text-slate-300"><code>java.util.TreeSet</code> is the exact equivalent of <code>std::set</code>. It is a NavigableSet implementation based on a TreeMap. Elements are ordered using their natural ordering or by a provided Comparator. Like std::set, it relies on a Red-Black tree under the hood.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300">No built-in sorted set. (Standard <code>set</code> is a hash table like unordered_set)</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Method Mapping</h4>
+                    <ul class="list-disc list-inside text-sm text-slate-400 space-y-1">
+                        <li><code>insert(val)</code> &rarr; <code>add(val)</code></li>
+                        <li><code>erase(val)</code> &rarr; <code>remove(val)</code></li>
+                        <li><code>find(val) != end()</code> &rarr; <code>contains(val)</code></li>
+                        <li><code>lower_bound(val)</code> &rarr; <code>ceiling(val)</code></li>
+                        <li><code>upper_bound(val)</code> &rarr; <code>higher(val)</code></li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Time Complexities</h4>
+                    <ul class="space-y-1 text-sm text-slate-400">
+                        <li class="flex justify-between"><span>Search (contains)</span><span class="font-mono text-emerald-400">O(log N)</span></li>
+                        <li class="flex justify-between"><span>Insert (add)</span><span class="font-mono text-emerald-400">O(log N)</span></li>
+                        <li class="flex justify-between"><span>Delete (remove)</span><span class="font-mono text-emerald-400">O(log N)</span></li>
+                    </ul>
+                </div>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300">No built-in sorted set. (Standard <code>Set</code> preserves insertion order, not sorted).</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.TreeSet;
+
+TreeSet&lt;Integer&gt; ts = new TreeSet&lt;&gt;();
+
+// Insert O(log n)
+ts.add(30);
+ts.add(10);
+ts.add(20);
+
+// Automatically sorted: [10, 20, 30]
+for (int num : ts) {
+    System.out.println(num);
+}
+
+// Search O(log n)
+boolean has20 = ts.contains(20);
+
+// Bounds (Equivalent to lower_bound / upper_bound)
+Integer lb = ts.ceiling(15); // Returns 20
+Integer ub = ts.higher(20);  // Returns 30
+
+// Remove O(log n)
+ts.remove(20);</code></pre>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">No Built-In Equivalent</h3>
+                <p class="text-sm text-slate-300">Python's built-in <code>set</code> is implemented as a Hash Table, making it the equivalent of C++ <code>std::unordered_set</code>. There is no standard library sorted tree set. For sorted operations, you typically maintain a sorted list using the <code>bisect</code> module, or use third-party libraries.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">No Built-In Equivalent</h3>
+                <p class="text-sm text-slate-300">JavaScript's built-in <code>Set</code> preserves insertion order but does not maintain a sorted binary tree. It acts more like a Hash Set. If you strictly require sorted set logic (lower/upper bounds, O(log N) insert), you must implement your own Red-Black Tree or AVL Tree.</p>
+            </div>
+        </div>
+        
+    </div>
 </section>

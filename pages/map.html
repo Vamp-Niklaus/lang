@@ -3,6 +3,25 @@
         <h2 class="text-2xl font-bold tracking-tight text-orange-400">Map (std::map)</h2>
         <p class="text-sm text-slate-400 mt-1">Implemented as a balanced binary search tree (Red-Black Tree).</p>
     </div>
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+
     <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
         <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
             <li><strong>Insert/Delete/Search by key:</strong> O(log n)</li>
@@ -20,35 +39,86 @@ m.size();          <span class="text-slate-500">// Get the number of elements - 
 </pre>
     </div>
 
-<!-- POLYGLOT_START -->
-<div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 mt-6 mb-6">
-    <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2 flex items-center space-x-2">
-        <span>🌎</span>
-        <span>Polyglot Equivalents</span>
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">☕</span>
-            <div>
-                <strong class="text-white block">Java:</strong>
-                <span class="font-mono text-xs text-amber-200"><code>java.util.TreeMap&lt;K, V&gt;</code> (Sorted keys)</span>
+
+
+    </div>
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">TreeMap&lt;K, V&gt;</h3>
+                <p class="text-sm text-slate-300"><code>java.util.TreeMap</code> is the exact equivalent of <code>std::map</code>. It is a Red-Black tree based NavigableMap implementation. The map is sorted according to the natural ordering of its keys, or by a Comparator provided at map creation time.</p>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🐍</span>
-            <div>
-                <strong class="text-white block">Python:</strong>
-                <span class="font-mono text-xs text-blue-300">No built-in sorted map. Standard <code>dict</code> preserves insertion order.</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Method Mapping</h4>
+                    <ul class="list-disc list-inside text-sm text-slate-400 space-y-1">
+                        <li><code>operator[k] = v</code> &rarr; <code>put(k, v)</code></li>
+                        <li><code>erase(k)</code> &rarr; <code>remove(k)</code></li>
+                        <li><code>find(k) != end()</code> &rarr; <code>containsKey(k)</code></li>
+                        <li><code>lower_bound(k)</code> &rarr; <code>ceilingKey(k)</code></li>
+                    </ul>
+                </div>
+                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                    <h4 class="font-semibold text-slate-200 mb-2">Time Complexities</h4>
+                    <ul class="space-y-1 text-sm text-slate-400">
+                        <li class="flex justify-between"><span>Search (get)</span><span class="font-mono text-emerald-400">O(log N)</span></li>
+                        <li class="flex justify-between"><span>Insert (put)</span><span class="font-mono text-emerald-400">O(log N)</span></li>
+                        <li class="flex justify-between"><span>Delete (remove)</span><span class="font-mono text-emerald-400">O(log N)</span></li>
+                    </ul>
+                </div>
             </div>
-        </li>
-        <li class="flex items-start space-x-3">
-            <span class="text-xl leading-none">🟨</span>
-            <div>
-                <strong class="text-white block">JavaScript:</strong>
-                <span class="font-mono text-xs text-yellow-300">No built-in sorted map. Standard <code>Map</code> preserves insertion order.</span>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.TreeMap;
+import java.util.Map;
+
+TreeMap&lt;Integer, String&gt; map = new TreeMap&lt;&gt;();
+
+// Insert O(log n)
+map.put(3, "C");
+map.put(1, "A");
+map.put(2, "B");
+
+// Iterating perfectly sorted by Key
+for (Map.Entry&lt;Integer, String&gt; entry : map.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+
+// Access O(log n)
+String val = map.get(2); // Returns "B"
+
+// Bounds
+Integer lb = map.ceilingKey(2); // Returns 2
+
+// Remove O(log n)
+map.remove(1);</code></pre>
             </div>
-        </li>
-    </ul>
-</div>
-<!-- POLYGLOT_END -->
+        </div>
+        
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">No Built-In Equivalent</h3>
+                <p class="text-sm text-slate-300">Python's built-in <code>dict</code> preserves insertion order but does NOT sort by keys. If you need a Red-Black tree map equivalent, you must rely on third-party libraries or maintain parallel structures.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">No Built-In Equivalent</h3>
+                <p class="text-sm text-slate-300">JavaScript's built-in <code>Map</code> preserves insertion order but does NOT sort by keys. If you require O(log N) key ordering, a custom implementation is required.</p>
+            </div>
+        </div>
+        
+    </div>
 </section>
