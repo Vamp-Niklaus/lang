@@ -1,0 +1,157 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-white">std::string (and Equivalents)</h2>
+        <p class="text-sm text-slate-400 mt-1">Deep dive into Strings across languages, focusing on immutability, manipulation, and special features.</p>
+    </div>
+
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">std::string (Mutable)</h3>
+                <p class="text-sm text-slate-300">In C++, <code>std::string</code> is heavily optimized and <strong>mutable</strong>. You can change individual characters directly via indexing.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-cpp text-sm text-slate-300">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+
+std::string s = "Hello World";
+
+// Mutability
+s[0] = 'J'; // "Jello World"
+
+// Substring
+std::string sub = s.substr(0, 5); // "Jello"
+
+// Length
+int len = s.length(); // or s.size()
+
+// Find
+size_t pos = s.find("World");
+
+// Reverse (In-place)
+std::reverse(s.begin(), s.end());</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-amber-200 mb-2">String (Immutable) & StringBuilder</h3>
+                <p class="text-sm text-slate-300">In Java, <code>String</code> is completely <strong>immutable</strong>. Modifying a string creates a new string. For heavy manipulation (loops, reversing), you MUST use <code>StringBuilder</code>.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">String s = "Hello World";
+
+// Length
+int len = s.length();
+
+// Access character (No [] operator!)
+char c = s.charAt(0); // 'H'
+
+// Substring (startIndex, endIndexExclusive)
+String sub = s.substring(0, 5); // "Hello"
+
+// Split
+String[] parts = s.split(" "); // ["Hello", "World"]
+
+// -------------------------------------------
+// STRINGBUILDER (For mutability & reversing)
+// -------------------------------------------
+StringBuilder sb = new StringBuilder(s);
+sb.setCharAt(0, 'J');    // Modifies in-place
+sb.reverse();            // Reverses in-place
+String newString = sb.toString();</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-blue-300 mb-2">str (Immutable)</h3>
+                <p class="text-sm text-slate-300">Python strings are <strong>immutable</strong>. You cannot change a character by index. Python excels at string manipulation through its incredibly powerful slicing syntax.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">s = "Hello World"
+
+# Length
+length = len(s)
+
+# Immutability Check
+# s[0] = 'J' # TypeError: 'str' object does not support item assignment
+
+# Mutating workaround: Replace or Slicing
+s = "J" + s[1:] # "Jello World"
+
+# Slicing (startIndex : endIndexExclusive)
+sub = s[0:5] # "Jello"
+
+# Split by delimiter
+parts = s.split(" ") # ['Jello', 'World']
+
+# Reverse a string (Idiomatic Python Slicing)
+reversed_s = s[::-1]
+
+# Join array back to string
+joined = "-".join(parts) # "Jello-World"</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+        <div class="space-y-4">
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">String (Immutable) & Template Literals</h3>
+                <p class="text-sm text-slate-300">JavaScript strings are <strong>immutable</strong>. JS features powerful Template Literals (backticks) for interpolation. Reversing a string requires splitting it into an array first.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">let s = "Hello World";
+
+// Length
+let len = s.length;
+
+// Immutability Check
+s[0] = 'J'; // Fails silently, string remains "Hello World"
+
+// Template Literals (Interpolation)
+let name = "Rakesh";
+let greeting = \`Hello \${name}, welcome!\`;
+
+// Substring
+let sub = s.substring(0, 5); // "Hello"
+
+// Split
+let parts = s.split(" "); // ["Hello", "World"]
+
+// Reverse a string (Split to Array -> Reverse -> Join)
+let reversed = s.split("").reverse().join("");
+
+// Mutating workaround
+s = "J" + s.slice(1); // "Jello World"</code></pre>
+            </div>
+        </div>
+    </div>
+
+</section>
