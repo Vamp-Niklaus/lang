@@ -1,0 +1,86 @@
+<section id="page-arrays" class="page-view  space-y-6">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">Arrays & Sequential Storage</h2>
+                        <p class="text-sm text-slate-400 mt-1">Fixed contiguous arrays vs dynamic structural arrays.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 min-w-[900px] lg:min-w-0 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-blue-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">C++</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+#include &lt;vector&gt;
+
+<span class="text-slate-500">// Raw Fixed Array</span>
+int rawArr[5] = {1, 2, 3};
+
+<span class="text-slate-500">// Dynamic Array (Vector)</span>
+std::vector&lt;int&gt; vec = {1, 2, 3};
+vec.push_back(4); <span class="text-slate-500">// Append</span>
+
+<span class="text-slate-500">// Sizing</span>
+int size = vec.size();
+
+<span class="text-slate-500">// Access</span>
+int first = vec[0];
+</pre>
+                        </div>
+
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-orange-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">JAVA</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+import java.util.ArrayList;
+
+<span class="text-slate-500">// Fixed Array</span>
+int[] rawArr = {1, 2, 3, 4, 5};
+
+<span class="text-slate-500">// Resizable List (Objects only)</span>
+ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(1); 
+list.add(2);
+
+<span class="text-slate-500">// Sizing</span>
+int size = list.size();
+
+<span class="text-slate-500">// Access</span>
+int first = list.get(0);
+</pre>
+                        </div>
+
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-yellow-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">JAVASCRIPT</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500">// Always dynamic and resizable</span>
+let arr = [1, 2, 3];
+
+<span class="text-slate-500">// Mutation operators</span>
+arr.push(4);    <span class="text-slate-500">// Append item</span>
+arr.unshift(0); <span class="text-slate-500">// Prepend item</span>
+
+<span class="text-slate-500">// Sizing property</span>
+let size = arr.length;
+
+<span class="text-slate-500">// Element retrieval</span>
+let first = arr[0];
+</pre>
+                        </div>
+
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-teal-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">PYTHON</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500"># Built-in Dynamic List type</span>
+arr = [1, 2, 3]
+
+<span class="text-slate-500"># Mutations</span>
+arr.append(4)   <span class="text-slate-500"># Add to end</span>
+arr.insert(0, 0)<span class="text-slate-500"># Positional insert</span>
+
+<span class="text-slate-500"># Total Elements function</span>
+size = len(arr)
+
+<span class="text-slate-500"># Bracket access</span>
+first = arr[0]
+last = arr[-1]  <span class="text-slate-500"># Negative indexing</span>
+</pre>
+                        </div>
+                    </div>
+                </section>

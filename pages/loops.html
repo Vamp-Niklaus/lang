@@ -1,0 +1,95 @@
+<section id="page-loops" class="page-view  space-y-6">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">Loops & Control Flow</h2>
+                        <p class="text-sm text-slate-400 mt-1">Iteration patterns over ranges and explicit counters.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 min-w-[900px] lg:min-w-0 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-blue-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">C++</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500">// Classic For Loop</span>
+for (int i = 0; i < 5; i++) {
+    std::cout << i << "\n";
+}
+
+<span class="text-slate-500">// While Loop</span>
+int w = 0;
+while (w < 3) {
+    w++;
+}
+
+<span class="text-slate-500">// Range-based / For-Each</span>
+int arr[] = {10, 20, 30};
+for (int val : arr) {
+    std::cout << val;
+}
+</pre>
+                        </div>
+
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-orange-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">JAVA</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500">// Classic For Loop</span>
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+
+<span class="text-slate-500">// While Loop</span>
+int w = 0;
+while (w < 3) {
+    w++;
+}
+
+<span class="text-slate-500">// Enhanced For loop</span>
+int[] arr = {10, 20, 30};
+for (int val : arr) {
+    System.out.println(val);
+}
+</pre>
+                        </div>
+
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-yellow-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">JAVASCRIPT</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500">// Standard Counter Loop</span>
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+<span class="text-slate-500">// For...of (Iterates values)</span>
+const items = [10, 20, 30];
+for (const val of items) {
+    console.log(val);
+}
+
+<span class="text-slate-500">// For...in (Iterates keys/index)</span>
+for (const index in items) {
+    console.log(index);
+}
+</pre>
+                        </div>
+
+                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60">
+                            <div class="text-teal-400 font-bold border-b border-slate-700 pb-2 mb-3 text-sm">PYTHON</div>
+<pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500"># Range tracking (0 to 4)</span>
+for i in range(5):
+    print(i)
+
+<span class="text-slate-500"># Custom range step (1 to 9 step 2)</span>
+for i in range(1, 10, 2):
+    print(i)
+
+<span class="text-slate-500"># Element iterator</span>
+items = [10, 20, 30]
+for val in items:
+    print(val)
+
+<span class="text-slate-500"># Index paired iteration</span>
+for idx, val in enumerate(items):
+    print(idx, val)
+</pre>
+                        </div>
+                    </div>
+                </section>

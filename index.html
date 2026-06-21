@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyglot DevRef</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Custom scrollbar for data tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <div class="flex flex-col h-screen overflow-hidden">
+        
+        <header class="bg-slate-800 border-b border-slate-700 px-4 py-3 flex items-center justify-between shadow-md shrink-0">
+            <div class="flex items-center space-x-3">
+                <button id="menuBtn" class="p-2 text-slate-400 hover:text-white focus:outline-none md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Polyglot.Ref</h1>
+            </div>
+            <div id="activePageTitle" class="text-xs font-semibold uppercase tracking-wider text-slate-400 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-700">
+                Dashboard
+            </div>
+        </header>
+
+        <div class="flex flex-1 overflow-hidden relative">
+            
+            <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-slate-800 border-r border-slate-700 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 flex flex-col justify-between overflow-y-auto">
+                <div class="p-4 space-y-6">
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Basics</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('primitives')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 bg-slate-700 text-indigo-400">
+                                <span>📦 Variables & Primitives</span>
+                            </button>
+                            <button onclick="navigateTo('loops')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🔄 Loops & Control Flow</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Data Structures</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('arrays')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🧱 Arrays & Vectors</span>
+                            </button>
+                            <button onclick="navigateTo('linkedlists')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🔗 Linked Lists</span>
+                            </button>
+                            <button onclick="navigateTo('maps')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🗺️ Maps / Dictionaries</span>
+                            </button>
+                            <button onclick="navigateTo('sets')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>💎 Sets</span>
+                            </button>
+                            <button onclick="navigateTo('stacksqueues')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🥞 Stacks & Queues</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Language Exclusives</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('exclusives')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-amber-400/90 hover:bg-slate-700/50">
+                                <span>🦄 Unique Features</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-slate-700 text-center text-xs text-slate-500">
+                    Built for Quick Parallel Review
+                </div>
+            </nav>
+
+            <div id="backdrop" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+
+            <main class="flex-1 overflow-x-auto overflow-y-auto p-4 md:p-6 custom-scrollbar" id="content-viewport">
+                
+                <div id="loader" class="flex items-center justify-center h-full text-slate-500 hidden">
+                    <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading...
+                </div>
+                <div id="error-message" class="text-red-400 bg-red-900/20 border border-red-500/50 p-4 rounded-xl hidden text-center mt-10">
+                    <p class="font-bold mb-2">Failed to load content.</p>
+                    <p class="text-sm">Please make sure you are running a local web server (e.g. <code>npx serve</code>, VS Code Live Server, or <code>python -m http.server</code>) because the Fetch API cannot load local files via <code>file://</code> URLs.</p>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.getElementById('menuBtn');
+        const backdrop = document.getElementById('backdrop');
+        const activePageTitle = document.getElementById('activePageTitle');
+        const viewport = document.getElementById('content-viewport');
+
+        // Drawer Menu Interactivity Toggles (Mobile layouts)
+        function toggleDrawer() {
+            sidebar.classList.toggle('-translate-x-full');
+            backdrop.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleDrawer);
+        backdrop.addEventListener('click', toggleDrawer);
+
+        // Map sidebar clicks to Hash Routing
+        function navigateTo(pageId) {
+            window.location.hash = pageId;
+            if (!sidebar.classList.contains('-translate-x-full')) {
+                toggleDrawer();
+            }
+        }
+
+        // Hash Router & Fetcher
+        async function loadPage() {
+            let pageId = window.location.hash.substring(1);
+            if (!pageId) {
+                pageId = 'primitives'; // Default page
+                window.location.hash = pageId;
+                return; // The hash change will trigger this again
+            }
+
+            // Remove previous active state
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                btn.classList.remove('bg-slate-700', 'text-indigo-400');
+                btn.classList.add('text-slate-400', 'hover:bg-slate-700/50', 'hover:text-white');
+            });
+
+            // Find new active button
+            const activeBtn = document.querySelector(`button[onclick="navigateTo('${pageId}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-slate-700', 'text-indigo-400');
+                activeBtn.classList.remove('text-slate-400', 'hover:bg-slate-700/50');
+                
+                // Set title
+                const sectionLabel = activeBtn.innerText.substring(2);
+                activePageTitle.innerText = sectionLabel;
+            }
+
+            // Clear viewport (except loaders/errors)
+            const loader = document.getElementById('loader');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Clean up old dynamically loaded page-views
+            document.querySelectorAll('.page-view').forEach(el => el.remove());
+
+            loader.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+
+            try {
+                const response = await fetch(`pages/${pageId}.html`);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const html = await response.text();
+                
+                // Create a wrapper for the loaded HTML
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = html;
+                const newContent = wrapper.firstElementChild;
+                
+                viewport.appendChild(newContent);
+                
+                // Reset scrolling alignments
+                viewport.scrollTop = 0;
+                viewport.scrollLeft = 0;
+            } catch (error) {
+                console.error('Error fetching page:', error);
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+            }
+        }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', loadPage);
+
+        // Load initial page on startup
+        document.addEventListener('DOMContentLoaded', loadPage);
+    </script>
+</body>
+</html>
