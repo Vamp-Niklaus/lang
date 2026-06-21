@@ -1,0 +1,152 @@
+
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Loops & Conditionals</h2>
+        <p class="text-sm text-slate-400 mt-1">The fundamental syntax for control flow across languages.</p>
+    </div>
+
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-cpp text-sm text-slate-300">// 1. If / Else
+if (x > 0) { ... } 
+else if (x < 0) { ... } 
+else { ... }
+
+// 2. Standard For Loop
+for (int i = 0; i < 10; ++i) { ... }
+
+// 3. Range-Based For Loop
+for (const auto& val : vec) { ... }
+
+// 4. While Loop
+while (x > 0) { --x; }
+
+// 5. Do-While
+do { ... } while (x > 0);
+
+// 6. Switch Statement (Works on primitives only)
+switch(x) {
+    case 1: break;
+    default: break;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">// 1. If / Else
+if (x > 0) { ... } 
+else if (x < 0) { ... } 
+else { ... }
+
+// 2. Standard For Loop
+for (int i = 0; i < 10; i++) { ... }
+
+// 3. Enhanced For-Loop (Works on Iterables & Arrays)
+for (int val : list) { ... }
+
+// 4. While & Do-While
+while (x > 0) { x--; }
+do { ... } while (x > 0);
+
+// 5. Switch Statement (Works on primitives & Strings!)
+switch(str) {
+    case "A": break;
+    default: break;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300"># 1. If / Elif / Else
+if x > 0:
+    pass
+elif x < 0:
+    pass
+else:
+    pass
+
+# 2. For Loop (Using ranges)
+# range(start, stop_exclusive, step)
+for i in range(0, 10, 1):
+    pass
+
+# 3. Enhanced For-Loop (Iterating over collections)
+for val in lst:
+    pass
+
+# With index using enumerate()
+for idx, val in enumerate(lst):
+    pass
+
+# 4. While Loop
+while x > 0:
+    x -= 1
+# Note: Python has no do-while loop.
+
+# 5. Switch Statement (Python 3.10+ match/case)
+match x:
+    case 1:
+        pass
+    case _:
+        pass</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// 1. If / Else
+if (x > 0) { ... } 
+else if (x < 0) { ... } 
+else { ... }
+
+// 2. Standard For Loop
+for (let i = 0; i < 10; i++) { ... }
+
+// 3. For-Of (Iterates over VALUES of Array/Map/Set)
+for (const val of arr) { ... }
+
+// 4. For-In (Iterates over KEYS of an Object)
+for (const key in obj) { ... }
+
+// 5. While & Do-While
+while (x > 0) { x--; }
+do { ... } while(x > 0);
+
+// 6. Switch Statement (Works on strings & numbers)
+switch(x) {
+    case "A": break;
+    default: break;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,140 @@
+
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Math & Bitwise</h2>
+        <p class="text-sm text-slate-400 mt-1">Mathematical functions, bit manipulation, and numeric gotchas.</p>
+    </div>
+
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-cpp text-sm text-slate-300">// MATH (<cmath>)
+int a = std::abs(-5);
+double p = std::pow(2, 3); // 8.0
+double s = std::sqrt(16);  // 4.0
+int g = std::gcd(10, 5);   // (<numeric>)
+
+// MIN/MAX (<algorithm>)
+int m = std::max(a, b);
+
+// BITWISE
+int x = 5;       // 0101
+int and_ = x & 1; // 0001
+int or_ = x | 2;  // 0111
+int xor_ = x ^ 1; // 0100
+int ls = x << 1;  // 1010 (x * 2)
+int rs = x >> 1;  // 0010 (x / 2)
+
+// BUILTIN POPCOUNT (Count set bits)
+int bits = __builtin_popcount(x); // GCC specific!</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">// MATH (java.lang.Math)
+int a = Math.abs(-5);
+double p = Math.pow(2, 3); // 8.0
+double s = Math.sqrt(16);  // 4.0
+
+// MIN/MAX
+int m = Math.max(a, b);
+
+// GCD (Write your own!)
+int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
+
+// BITWISE
+int x = 5;
+int and_ = x & 1;
+int or_ = x | 2;
+int xor_ = x ^ 1;
+int ls = x << 1; 
+int rs = x >> 1;  // Signed right shift
+int urs = x >>> 1; // Unsigned right shift (Java specific!)
+
+// POPCOUNT
+int bits = Integer.bitCount(x);</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300"># MATH
+a = abs(-5)
+p = pow(2, 3) # Or 2 ** 3
+import math
+s = math.sqrt(16)
+g = math.gcd(10, 5)
+
+# MIN/MAX
+m = max(a, b)
+
+# BITWISE (Note: Python ints have arbitrary precision/no overflow)
+x = 5
+and_ = x & 1
+or_ = x | 2
+xor_ = x ^ 1
+ls = x << 1
+rs = x >> 1
+
+# POPCOUNT (Python 3.10+)
+bits = x.bit_count()</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// MATH (Math object)
+let a = Math.abs(-5);
+let p = Math.pow(2, 3); // Or 2 ** 3
+let s = Math.sqrt(16);
+
+// MIN/MAX
+let m = Math.max(a, b);
+
+// BITWISE 
+// WARNING: Bitwise ops in JS forcibly convert numbers to 32-bit signed integers!
+let x = 5;
+let and_ = x & 1;
+let or_ = x | 2;
+let xor_ = x ^ 1;
+let ls = x << 1;
+let rs = x >> 1;
+let urs = x >>> 1; // Unsigned right shift
+
+// POPCOUNT (Write your own)
+function popcount(n) {
+    let count = 0;
+    while(n) { n &= (n - 1); count++; }
+    return count;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>

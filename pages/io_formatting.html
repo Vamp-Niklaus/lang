@@ -1,0 +1,119 @@
+
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Input & Output</h2>
+        <p class="text-sm text-slate-400 mt-1">Reading from stdin, writing to stdout, and avoiding Time Limit Exceeded.</p>
+    </div>
+
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-cpp text-sm text-slate-300">// 1. Standard I/O
+#include <iostream>
+int x;
+std::cin >> x;
+std::cout << x << "\n";
+
+// 2. Fast I/O (Crucial for Competitive Programming)
+// Put this at the very top of main() to disable synchronization with C stdio
+std::ios_base::sync_with_stdio(false);
+std::cin.tie(NULL);
+
+// Note: Always use '\n' instead of std::endl, 
+// because std::endl flushes the buffer and is very slow.</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.Scanner;
+import java.io.*;
+
+// 1. Slow I/O (Scanner - Fine for small input)
+Scanner sc = new Scanner(System.in);
+int x = sc.nextInt();
+System.out.println(x);
+
+// 2. Fast I/O (BufferedReader - Essential for CP)
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+StringTokenizer st = new StringTokenizer(br.readLine());
+int y = Integer.parseInt(st.nextToken());
+
+// Fast Output
+PrintWriter pw = new PrintWriter(System.out);
+pw.println(y);
+pw.flush(); // MUST flush at the end!</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">import sys
+
+# 1. Standard I/O
+x = int(input())
+print(x)
+
+# 2. Fast I/O (Crucial for CP)
+# Reading all of stdin at once and splitting it by whitespace
+# This is drastically faster than calling input() in a loop.
+input_data = sys.stdin.read().split()
+if input_data:
+    x = int(input_data[0])
+
+# Fast Print (Avoids newline overhead)
+sys.stdout.write(str(x) + "\n")
+
+# Reading lines efficiently
+lines = sys.stdin.readlines()</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const fs = require('fs');
+
+// Fast I/O in Node.js (Reading all of stdin to a buffer)
+// 0 refers to stdin (file descriptor 0)
+const input = fs.readFileSync(0, 'utf-8').trim().split(/\s+/);
+
+let idx = 0;
+let x = parseInt(input[idx++], 10);
+
+// Output
+console.log(x);
+
+// If printing thousands of lines, build a giant string first:
+let out = [];
+out.push(x);
+console.log(out.join("\n"));</code></pre>
+            </div>
+        </div>
+    </div>
+</section>

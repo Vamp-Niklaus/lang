@@ -1,0 +1,120 @@
+
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Comparators & Sorting</h2>
+        <p class="text-sm text-slate-400 mt-1">Custom sorting logic for sorting objects or multiple fields.</p>
+    </div>
+
+    <!-- TABS MENU -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-700/50 mb-6 pb-0 mt-4">
+        <button onclick="switchTab(this, 'cpp')" class="tab-btn active bg-slate-700 text-white border-b-2 border-indigo-400 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>⚙️</span><span>C++</span>
+        </button>
+        <button onclick="switchTab(this, 'java')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>☕</span><span>Java</span>
+        </button>
+        <button onclick="switchTab(this, 'python')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🐍</span><span>Python</span>
+        </button>
+        <button onclick="switchTab(this, 'js')" class="tab-btn text-slate-400 hover:text-white hover:bg-slate-700/50 px-4 py-2 rounded-t-md text-sm font-semibold flex items-center space-x-2 transition-all">
+            <span>🟨</span><span>JavaScript</span>
+        </button>
+    </div>
+
+    <!-- C++ TAB -->
+    <div class="tab-content block" id="tab-cpp">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-cpp text-sm text-slate-300">// 1. Ascending Sort (Default)
+std::sort(vec.begin(), vec.end());
+
+// 2. Descending Sort
+std::sort(vec.begin(), vec.end(), std::greater<int>());
+
+// 3. Custom Lambda Sorting (e.g., sort by 2nd element of pair)
+std::sort(vec.begin(), vec.end(), [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
+    if (a.second != b.second) return a.second < b.second; // Primary: sort by 2nd asc
+    return a.first > b.first;                             // Secondary: sort by 1st desc
+});</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVA TAB -->
+    <div class="tab-content hidden" id="tab-java">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-java text-sm text-slate-300">import java.util.Collections;
+import java.util.Comparator;
+
+// 1. Ascending Sort (Default for primitives and Comparable objects)
+Collections.sort(list); // Or list.sort(null);
+
+// 2. Descending Sort
+list.sort(Collections.reverseOrder());
+
+// 3. Custom Lambda Sorting (e.g., sort pairs)
+// Return negative if 'a' comes before 'b', positive if 'b' comes before 'a', 0 if equal.
+list.sort((a, b) -> {
+    if (a[1] != b[1]) return Integer.compare(a[1], b[1]); // Ascending
+    return Integer.compare(b[0], a[0]);                   // Descending
+});
+
+// 4. Comparator.comparing (Cleanest approach)
+list.sort(Comparator.comparing((int[] a) -> a[1])
+                    .thenComparing(a -> a[0], Comparator.reverseOrder()));</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- PYTHON TAB -->
+    <div class="tab-content hidden" id="tab-python">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300"># 1. Ascending Sort
+lst.sort()
+
+# 2. Descending Sort
+lst.sort(reverse=True)
+
+# 3. Custom Key Function (Tuple sorting)
+# In Python, we don't return positive/negative. 
+# We return a TUPLE representing the sort priority.
+# To sort descending, we negate the number.
+lst.sort(key=lambda x: (x[1], -x[0]))
+# Primary: x[1] ascending
+# Secondary: x[0] descending
+
+# 4. Custom Comparator (Rarely used, fallback to functools.cmp_to_key)
+from functools import cmp_to_key
+def compare(a, b):
+    if a + b > b + a: return 1
+    elif a + b < b + a: return -1
+    return 0
+lst.sort(key=cmp_to_key(compare))</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS TAB -->
+    <div class="tab-content hidden" id="tab-js">
+        <div class="space-y-4">
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// WARNING: JS array.sort() converts elements to strings and sorts alphabetically by default!
+// [1, 10, 2].sort() -> [1, 10, 2] !!!
+
+// 1. Numeric Ascending Sort (MUST provide comparator)
+arr.sort((a, b) => a - b);
+
+// 2. Numeric Descending Sort
+arr.sort((a, b) => b - a);
+
+// 3. Custom Sorting Logic
+arr.sort((a, b) => {
+    if (a[1] !== b[1]) return a[1] - b[1]; // Primary: ascending
+    return b[0] - a[0];                    // Secondary: descending
+});</code></pre>
+            </div>
+        </div>
+    </div>
+</section>

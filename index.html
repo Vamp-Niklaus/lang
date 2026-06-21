@@ -41,6 +41,24 @@
             <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-slate-800 border-r border-slate-700 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 flex flex-col justify-between overflow-y-auto">
                 <div class="p-4 space-y-6">
                     <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Fundamentals</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('loops_conditionals')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🔁 Loops & Conditionals</span>
+                            </button>
+                            <button onclick="navigateTo('comparators')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>⚖️ Comparators & Sorting</span>
+                            </button>
+                            <button onclick="navigateTo('math_bitwise')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🧮 Math & Bitwise</span>
+                            </button>
+                            <button onclick="navigateTo('io_formatting')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>⌨️ Input & Output</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
                         <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Reference</span>
                         <div class="mt-2 space-y-1">
                             <button onclick="navigateTo('cross_reference')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
