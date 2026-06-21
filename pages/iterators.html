@@ -1,0 +1,58 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-orange-400">Iterators (&lt;iterator&gt;)</h2>
+        <p class="text-sm text-slate-400 mt-1">Abstractions for pointers that allow algorithms to operate on data structures.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Core Tools</p>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">Iterator Categories</h3>
+            <ul class="text-sm text-slate-300 space-y-2">
+                <li><strong>Input Iterator:</strong> Read, forward moving, single-pass. <code>*a</code>, <code>a++</code></li>
+                <li><strong>Output Iterator:</strong> Write, forward moving, single-pass. <code>*a = t</code>, <code>a++</code></li>
+                <li><strong>Forward Iterator:</strong> Input/Output + multi-pass.</li>
+                <li><strong>Bidirectional Iterator:</strong> Forward + backward moving. <code>a--</code>, <code>--a</code> (List, Set, Map)</li>
+                <li><strong>Random Access Iterator:</strong> Bidirectional + pointer arithmetic. <code>a[n]</code>, <code>a+n</code>, <code>a-b</code> (Vector, Deque)</li>
+            </ul>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">Stream Iterators</h3>
+            <p class="text-sm text-slate-300 mb-2">Allows treating I/O streams as ranges.</p>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+<span class="text-slate-500">// Read from input</span>
+istream_iterator&lt;int&gt; priter(cin);
+istream_iterator&lt;int&gt; eosi; // End of stream
+
+<span class="text-slate-500">// Write to output (delimited by space)</span>
+ostream_iterator&lt;int&gt; osi(cout, " ");
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">Adaptors</h3>
+            <ul class="text-sm text-slate-300 space-y-3">
+                <li>
+                    <strong>Reverse Iterator:</strong> <code>reverse_iterator</code><br>
+                    Iterates backwards (e.g. <code>rbegin()</code> and <code>rend()</code>).
+                </li>
+                <li>
+                    <strong>Insert Iterators:</strong> Overrides assignment <code>*i = x</code> to insert elements.<br>
+                    <code>back_inserter(container)</code>: Calls <code>push_back(x)</code>.<br>
+                    <code>front_inserter(container)</code>: Calls <code>push_front(x)</code>.<br>
+                    <code>inserter(container, iter)</code>: Calls <code>insert(iter, x)</code>.
+                </li>
+            </ul>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">Iterator Traits</h3>
+            <p class="text-sm text-slate-300 mb-2">Provides standard typedefs to query iterator properties at compile time.</p>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+template&lt;class Itr&gt;
+typename iterator_traits&lt;Itr&gt;::value_type
+</pre>
+        </div>
+    </div>
+</section>

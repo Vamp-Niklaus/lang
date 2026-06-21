@@ -1,0 +1,45 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-teal-400">Numeric (&lt;numeric&gt;)</h2>
+        <p class="text-sm text-slate-400 mt-1">Computational algorithms specifically focused on numerical operations.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Core Tools</p>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">accumulate</h3>
+            <p class="text-sm text-slate-300 mb-2">Computes the sum (or customized binary operation) of the given value <code>init</code> and elements in the range <code>[first, last)</code>.</p>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+accumulate(first, last, initVal);
+accumulate(first, last, initVal, binaryOp);
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">inner_product</h3>
+            <p class="text-sm text-slate-300 mb-2">Computes the inner product (dot product) of two ranges, starting with an initial value.</p>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+inner_product(first1, last1, first2, initVal);
+inner_product(first1, last1, first2, initVal, sumOp, multOp);
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">partial_sum</h3>
+            <p class="text-sm text-slate-300 mb-2">Computes the partial sums of the elements in the subranges and writes them to the destination range.</p>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+partial_sum(first, last, result);
+// result[k] = sum(first..first+k)
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2 text-sm">adjacent_difference</h3>
+            <p class="text-sm text-slate-300 mb-2">Computes the differences between adjacent elements in the range.</p>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+adjacent_difference(first, last, result);
+// result[k] = src[k] - src[k-1]
+</pre>
+        </div>
+    </div>
+</section>

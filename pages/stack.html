@@ -1,0 +1,28 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-fuchsia-400">Stack (std::stack)</h2>
+        <p class="text-sm text-slate-400 mt-1">Adapter template providing a LIFO specialized interface.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Container Adapter</p>
+    </div>
+    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-4">
+        <p class="text-sm text-slate-300">The <code>std::stack</code> template isn't a separate data structure. It is an <strong>adapter template</strong>, which provides a specialized interface to an existing template (by default, built from deques).</p>
+        <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
+            <li><strong>Push/Pop/Top:</strong> O(1)</li>
+        </ul>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-4 rounded-lg overflow-x-auto leading-relaxed">
+<span class="text-slate-500">#include &lt;stack&gt;</span>
+
+std::stack&lt;int&gt; s;
+if (!s.empty()) {
+    std::cout &lt;&lt; s.size(); 
+}
+
+s.push(4);
+std::cout &lt;&lt; s.top(); <span class="text-slate-500">// Get the top item</span>
+
+<span class="text-slate-500">// Note: pop() does NOT return the item that was popped.</span>
+<span class="text-slate-500">// If you want it, you must use top() before pop()</span>
+s.pop(); 
+</pre>
+    </div>
+</section>

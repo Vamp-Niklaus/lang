@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polyglot DevRef</title>
+    <title>C++ STL Cheatsheet</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         /* Custom scrollbar for data tables */
@@ -29,7 +29,7 @@
                 <button id="menuBtn" class="p-2 text-slate-400 hover:text-white focus:outline-none md:hidden">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
-                <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Polyglot.Ref</h1>
+                <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">C++ STL Cheatsheet</h1>
             </div>
             <div id="activePageTitle" class="text-xs font-semibold uppercase tracking-wider text-slate-400 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-700">
                 Dashboard
@@ -41,49 +41,124 @@
             <nav id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-slate-800 border-r border-slate-700 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 flex flex-col justify-between overflow-y-auto">
                 <div class="p-4 space-y-6">
                     <div>
-                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Basics</span>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Reference</span>
                         <div class="mt-2 space-y-1">
-                            <button onclick="navigateTo('primitives')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 bg-slate-700 text-indigo-400">
-                                <span>📦 Variables & Primitives</span>
-                            </button>
-                            <button onclick="navigateTo('loops')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
-                                <span>🔄 Loops & Control Flow</span>
+                            <button onclick="navigateTo('cross_reference')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>📋 Cross-Reference Table</span>
                             </button>
                         </div>
                     </div>
 
                     <div>
-                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Data Structures</span>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Sequence Containers</span>
                         <div class="mt-2 space-y-1">
-                            <button onclick="navigateTo('arrays')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
-                                <span>🧱 Arrays & Vectors</span>
+                            <button onclick="navigateTo('array')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🍱 Array</span>
                             </button>
-                            <button onclick="navigateTo('linkedlists')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
-                                <span>🔗 Linked Lists</span>
+                            <button onclick="navigateTo('vector')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>📦 Vector</span>
                             </button>
-                            <button onclick="navigateTo('maps')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
-                                <span>🗺️ Maps / Dictionaries</span>
+                            <button onclick="navigateTo('deque')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🚋 Deque</span>
                             </button>
-                            <button onclick="navigateTo('sets')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
-                                <span>💎 Sets</span>
+                            <button onclick="navigateTo('forward_list')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🔗 Forward List</span>
                             </button>
-                            <button onclick="navigateTo('stacksqueues')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
-                                <span>🥞 Stacks & Queues</span>
+                            <button onclick="navigateTo('list')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>⛓️ List</span>
                             </button>
                         </div>
                     </div>
 
                     <div>
-                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Language Exclusives</span>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Associative Containers</span>
                         <div class="mt-2 space-y-1">
-                            <button onclick="navigateTo('exclusives')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-amber-400/90 hover:bg-slate-700/50">
-                                <span>🦄 Unique Features</span>
+                            <button onclick="navigateTo('set')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🌲 Set</span>
+                            </button>
+                            <button onclick="navigateTo('multiset')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🌳 Multiset</span>
+                            </button>
+                            <button onclick="navigateTo('map')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🗺️ Map</span>
+                            </button>
+                            <button onclick="navigateTo('multimap')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🗺️ Multimap</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Unordered Containers</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('unordered_set')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>💎 Unordered Set</span>
+                            </button>
+                            <button onclick="navigateTo('unordered_multiset')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>💠 Unord. Multiset</span>
+                            </button>
+                            <button onclick="navigateTo('unordered_map')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🧩 Unordered Map</span>
+                            </button>
+                            <button onclick="navigateTo('unordered_multimap')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🎭 Unord. Multimap</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Adapters</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('stack')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🥞 Stack</span>
+                            </button>
+                            <button onclick="navigateTo('queue')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🚶 Queue</span>
+                            </button>
+                            <button onclick="navigateTo('priority_queue')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>⭐ Priority Queue</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Core Tools</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('algorithms')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>⚙️ Algorithms</span>
+                            </button>
+                            <button onclick="navigateTo('numeric')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🧮 Numeric</span>
+                            </button>
+                            <button onclick="navigateTo('iterators')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>📍 Iterators</span>
+                            </button>
+                            <button onclick="navigateTo('functional')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>⚡ Functors</span>
+                            </button>
+                            <button onclick="navigateTo('utilities')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🛠️ Utilities</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Custom Structures</span>
+                        <div class="mt-2 space-y-1">
+                            <button onclick="navigateTo('min_heap')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🔻 Min Binary Heap</span>
+                            </button>
+                            <button onclick="navigateTo('binary_tree')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🌲 Binary Tree</span>
+                            </button>
+                            <button onclick="navigateTo('graph')" class="nav-link w-full text-left px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 text-slate-400 hover:bg-slate-700/50 hover:text-white">
+                                <span>🕸️ Graph</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="p-4 border-t border-slate-700 text-center text-xs text-slate-500">
-                    Built for Quick Parallel Review
+                    STL Cheatsheet v1.0.0
                 </div>
             </nav>
 
@@ -135,7 +210,7 @@
         async function loadPage() {
             let pageId = window.location.hash.substring(1);
             if (!pageId) {
-                pageId = 'primitives'; // Default page
+                pageId = 'vector'; // Default page
                 window.location.hash = pageId;
                 return; // The hash change will trigger this again
             }

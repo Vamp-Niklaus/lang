@@ -1,0 +1,30 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-amber-500">Binary Tree</h2>
+        <p class="text-sm text-slate-400 mt-1">Custom implementations of a binary tree.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Custom Implementation</p>
+    </div>
+    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-4">
+        <p class="text-sm text-slate-300">A simple binary tree is often implemented with <code>&lt;set&gt;</code>, <code>&lt;map&gt;</code>, or <code>&lt;priority_queue&gt;</code>. If you still want to implement one by hand, here are two ways:</p>
+        
+        <div>
+            <h3 class="font-bold text-white mb-2 text-sm">1. Array-Based (Implicit Tree)</h3>
+            <p class="text-xs text-slate-400 mb-2">Use a simple <code>&lt;vector&gt;</code>. Move through the tree using index math: <code>i * 2</code> for left child, and <code>i * 2 + 1</code> for right child (1-indexed). Inserting via <code>push_back()</code> keeps it balanced.</p>
+        </div>
+
+        <div>
+            <h3 class="font-bold text-white mb-2 text-sm">2. Node-Based (Explicit Pointers)</h3>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-4 rounded-lg overflow-x-auto leading-relaxed">
+<span class="text-slate-500">// Basic Node structure with pointers</span>
+class Node {
+public:
+    int key_value;
+    Node* left;
+    Node* right;
+    
+    Node(int val) : key_value(val), left(nullptr), right(nullptr) {}
+};
+</pre>
+        </div>
+    </div>
+</section>

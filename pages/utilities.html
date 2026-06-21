@@ -1,0 +1,63 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-lime-400">Utilities</h2>
+        <p class="text-sm text-slate-400 mt-1">Useful helpers and string functions.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-white">Pair & Tuple</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+#include &lt;utility&gt;
+std::pair&lt;int, int&gt; p = {1, 2};
+
+#include &lt;tuple&gt;
+std::tuple&lt;int, char, double&gt; t = {1, 'a', 2.0};
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-white">String Functions</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+std::stoi("10"); <span class="text-slate-500">// String to Int</span>
+std::to_string(10); <span class="text-slate-500">// Number to String</span>
+std::getline(std::cin, str); <span class="text-slate-500">// Read line</span>
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-white">Swap & Reverse</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+std::swap(a, b); <span class="text-slate-500">// O(1)</span>
+std::reverse(vec.begin(), vec.end()); <span class="text-slate-500">// O(n)</span>
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-white">Permutations</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+std::next_permutation(vec.begin(), vec.end());
+std::prev_permutation(vec.begin(), vec.end());
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-white">Memory Set & Fill</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+std::fill(vec.begin(), vec.end(), val);
+#include &lt;cstring&gt;
+std::memset(ptr, -1, sizeof(ptr));
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-2">
+            <h3 class="font-bold text-white">Math & Count</h3>
+<pre class="text-xs font-mono text-slate-300 bg-slate-900/60 p-3 rounded-lg overflow-x-auto">
+std::min(a, b);
+std::max(a, b);
+std::abs(val);
+std::count(vec.begin(), vec.end(), val);
+</pre>
+        </div>
+    </div>
+</section>

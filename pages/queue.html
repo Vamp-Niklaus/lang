@@ -1,0 +1,21 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-rose-400">Queue (std::queue)</h2>
+        <p class="text-sm text-slate-400 mt-1">Implemented as a deque (double-ended queue) by default. FIFO structure.</p>
+    </div>
+    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+        <ul class="text-sm text-slate-300 list-disc list-inside mb-4 space-y-1">
+            <li><strong>Enqueue/Dequeue/Front:</strong> O(1)</li>
+        </ul>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-4 rounded-lg overflow-x-auto leading-relaxed">
+<span class="text-slate-500">#include &lt;queue&gt;</span>
+
+std::queue&lt;int&gt; q;
+q.push(10); <span class="text-slate-500">// Enqueue an element - O(1)</span>
+q.pop();    <span class="text-slate-500">// Dequeue an element - O(1)</span>
+q.front();  <span class="text-slate-500">// Get the front element - O(1)</span>
+q.size();   <span class="text-slate-500">// Get the number of elements - O(1)</span>
+q.empty();  <span class="text-slate-500">// Check if the queue is empty - O(1)</span>
+</pre>
+    </div>
+</section>

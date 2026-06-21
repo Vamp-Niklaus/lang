@@ -1,0 +1,22 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-pink-400">Deque (std::deque)</h2>
+        <p class="text-sm text-slate-400 mt-1">Double-ended queue. Similar to vector but efficient at both ends.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Sequence Container</p>
+    </div>
+    <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 space-y-4">
+        <p class="text-sm text-slate-300">Deques offer a similar interface to vectors, but additionally provide efficient insertion and deletion at the front of the data structure. However, be aware that deques are <strong>not guaranteed to be implemented internally as contiguous arrays</strong>.</p>
+        
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-4 rounded-lg overflow-x-auto leading-relaxed">
+<span class="text-slate-500">#include &lt;deque&gt;</span>
+std::deque&lt;int&gt; d;
+
+d.push_back(10);
+d.push_front(5);  <span class="text-slate-500">// O(1) front insertion</span>
+
+d.pop_back();
+d.pop_front();    <span class="text-slate-500">// O(1) front deletion</span>
+</pre>
+        <p class="text-sm text-slate-300">See the <a href="#cross_reference" class="text-indigo-400 hover:underline" onclick="navigateTo('cross_reference')">Cross-Reference Table</a> for a comprehensive list of supported methods and iterators.</p>
+    </div>
+</section>

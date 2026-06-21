@@ -1,0 +1,87 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-yellow-400">Algorithms (&lt;algorithm&gt;)</h2>
+        <p class="text-sm text-slate-400 mt-1">A comprehensive suite of functions operating on ranges of elements via iterators.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Core Tools</p>
+    </div>
+    
+    <div class="space-y-6">
+        <!-- Query Algorithms -->
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Query Algorithms (Non-Mutating)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300 font-mono">
+                <div><code>for_each(first, last, f)</code><br><span class="text-xs text-slate-400 font-sans">Applies f to each element.</span></div>
+                <div><code>find(first, last, val)</code><br><span class="text-xs text-slate-400 font-sans">Finds first occurrence of val.</span></div>
+                <div><code>find_if(first, last, pred)</code><br><span class="text-xs text-slate-400 font-sans">Finds first element matching pred.</span></div>
+                <div><code>adjacent_find(first, last)</code><br><span class="text-xs text-slate-400 font-sans">Finds first adjacent duplicate.</span></div>
+                <div><code>count(first, last, val, &n)</code><br><span class="text-xs text-slate-400 font-sans">Counts occurrences of val.</span></div>
+                <div><code>mismatch(f1, l1, f2)</code><br><span class="text-xs text-slate-400 font-sans">Finds first mismatched pair.</span></div>
+                <div><code>equal(f1, l1, f2)</code><br><span class="text-xs text-slate-400 font-sans">Checks if ranges are equal.</span></div>
+                <div><code>search(f1, l1, f2, l2)</code><br><span class="text-xs text-slate-400 font-sans">Finds subsequence.</span></div>
+            </div>
+        </div>
+
+        <!-- Mutating Algorithms -->
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Mutating Algorithms</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300 font-mono">
+                <div><code>copy(f1, l1, dest)</code><br><span class="text-xs text-slate-400 font-sans">Copies elements to dest.</span></div>
+                <div><code>swap(x, y)</code><br><span class="text-xs text-slate-400 font-sans">Swaps two values.</span></div>
+                <div><code>transform(f1, l1, dest, op)</code><br><span class="text-xs text-slate-400 font-sans">Applies op to range, outputs to dest.</span></div>
+                <div><code>replace(f, l, old, new)</code><br><span class="text-xs text-slate-400 font-sans">Replaces old with new.</span></div>
+                <div><code>fill(f, l, val)</code><br><span class="text-xs text-slate-400 font-sans">Fills range with val.</span></div>
+                <div><code>generate(f, l, gen)</code><br><span class="text-xs text-slate-400 font-sans">Assigns result of gen() to range.</span></div>
+                <div><code>remove(f, l, val)</code><br><span class="text-xs text-slate-400 font-sans">Shifts to hide val (must follow with erase).</span></div>
+                <div><code>unique(f, l)</code><br><span class="text-xs text-slate-400 font-sans">Removes consecutive duplicates.</span></div>
+                <div><code>reverse(f, l)</code><br><span class="text-xs text-slate-400 font-sans">Reverses elements.</span></div>
+                <div><code>rotate(f, mid, l)</code><br><span class="text-xs text-slate-400 font-sans">Left rotates by mid-first.</span></div>
+                <div><code>random_shuffle(f, l)</code><br><span class="text-xs text-slate-400 font-sans">Randomly permutes range.</span></div>
+                <div><code>partition(f, l, pred)</code><br><span class="text-xs text-slate-400 font-sans">Groups true pred elements first.</span></div>
+            </div>
+        </div>
+
+        <!-- Sorting & Binary Search -->
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Sort & Binary Search (Requires Sorted)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300 font-mono">
+                <div><code>sort(f, l)</code><br><span class="text-xs text-slate-400 font-sans">O(N log N) sort.</span></div>
+                <div><code>stable_sort(f, l)</code><br><span class="text-xs text-slate-400 font-sans">Sort preserving relative order.</span></div>
+                <div><code>partial_sort(f, m, l)</code><br><span class="text-xs text-slate-400 font-sans">Sorts up to m.</span></div>
+                <div><code>nth_element(f, n, l)</code><br><span class="text-xs text-slate-400 font-sans">Places nth element in sorted pos.</span></div>
+                <div><code>binary_search(f, l, val)</code><br><span class="text-xs text-slate-400 font-sans">Returns true if found.</span></div>
+                <div><code>lower_bound(f, l, val)</code><br><span class="text-xs text-slate-400 font-sans">First iter >= val.</span></div>
+                <div><code>upper_bound(f, l, val)</code><br><span class="text-xs text-slate-400 font-sans">First iter > val.</span></div>
+                <div><code>equal_range(f, l, val)</code><br><span class="text-xs text-slate-400 font-sans">Pair of lower/upper bounds.</span></div>
+                <div><code>merge(f1, l1, f2, l2, res)</code><br><span class="text-xs text-slate-400 font-sans">Merges 2 sorted ranges.</span></div>
+            </div>
+        </div>
+
+        <!-- Set Operations & Heap -->
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Set Operations & Heaps</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300 font-mono">
+                <div><code>set_union(f1, l1, f2, l2, r)</code></div>
+                <div><code>set_intersection(f1, l1, f2, l2, r)</code></div>
+                <div><code>set_difference(...)</code></div>
+                <div><code>set_symmetric_difference(...)</code></div>
+                <div class="col-span-2 border-t border-slate-700 my-2"></div>
+                <div><code>make_heap(f, l)</code></div>
+                <div><code>push_heap(f, l)</code></div>
+                <div><code>pop_heap(f, l)</code></div>
+                <div><code>sort_heap(f, l)</code></div>
+            </div>
+        </div>
+
+        <!-- Min/Max & Permutations -->
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Min/Max & Permutations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300 font-mono">
+                <div><code>min(a, b) / max(a, b)</code></div>
+                <div><code>min_element(f, l) / max_element(f, l)</code></div>
+                <div><code>next_permutation(f, l)</code></div>
+                <div><code>prev_permutation(f, l)</code></div>
+                <div><code>lexicographical_compare(f1,l1,f2,l2)</code></div>
+            </div>
+        </div>
+    </div>
+</section>

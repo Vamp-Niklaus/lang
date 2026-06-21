@@ -1,0 +1,47 @@
+<section class="page-view space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold tracking-tight text-purple-400">Graph / N-Aries Tree</h2>
+        <p class="text-sm text-slate-400 mt-1">Implementations for graph traversal and representation.</p>
+        <p class="text-xs text-slate-500 mt-2">Category: Custom Implementation</p>
+    </div>
+    
+    <div class="space-y-4">
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2">1. Implicit Graph (Indexed 0 to N)</h3>
+            <p class="text-sm text-slate-300 mb-2">When nodes are identified using indices, the vertex matches the vector index (Adjacency List).</p>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-4 rounded-lg overflow-x-auto leading-relaxed">
+<span class="text-slate-500">// Unweighted Graph</span>
+std::vector&lt;std::vector&lt;int&gt;&gt; graph;
+
+<span class="text-slate-500">// Weighted Graph (Edge weights)</span>
+std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; graph;
+</pre>
+        </div>
+
+        <div class="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60">
+            <h3 class="font-bold text-white mb-2">2. Object-Oriented Graph</h3>
+            <p class="text-sm text-slate-300 mb-2">When nodes require custom identifiers or properties, you must create dedicated classes.</p>
+<pre class="text-sm font-mono text-slate-300 bg-slate-900/60 p-4 rounded-lg overflow-x-auto leading-relaxed">
+class Edge;
+
+class Vertex {
+public:
+    int id;
+    std::vector&lt;Edge*&gt; ptr_edges;
+};
+
+class Edge {
+public:
+    Vertex* from;
+    Vertex* to;
+    int cost;
+};
+
+class Graph {
+public:
+    std::vector&lt;Vertex&gt; vertices;
+};
+</pre>
+        </div>
+    </div>
+</section>
