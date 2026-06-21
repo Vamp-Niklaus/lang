@@ -88,27 +88,61 @@ if (count == 1) {
         
     </div>
 
+    
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-blue-300 mb-2">collections.Counter (Unordered)</h3>
-                <p class="text-sm text-slate-300">Python doesn't have a sorted multiset, but for merely counting frequencies, <code>Counter</code> is the standard.</p>
+                <h3 class="text-lg font-bold text-blue-300 mb-2">collections.Counter</h3>
+                <p class="text-sm text-slate-300">To simulate a multiset, you use a <code>Counter</code> which maps elements to their frequency.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">from collections import Counter
+
+multiset = Counter()
+
+# Insert (O(1))
+multiset[10] += 1
+multiset[10] += 1
+multiset[20] += 1
+
+# Erase one instance
+if multiset[10] > 0:
+    multiset[10] -= 1
+    if multiset[10] == 0:
+        del multiset[10]
+
+# Total elements
+total = sum(multiset.values())</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-yellow-300 mb-2">Map</h3>
-                <p class="text-sm text-slate-300">JavaScript requires maintaining a <code>Map</code> of element counts manually.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Map as Frequency Counter</h3>
+                <p class="text-sm text-slate-300">In JavaScript, you simulate a multiset by mapping elements to their count.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const multiset = new Map();
+
+function insert(val) {
+    multiset.set(val, (multiset.get(val) || 0) + 1);
+}
+
+function eraseOne(val) {
+    if (multiset.has(val)) {
+        let count = multiset.get(val);
+        if (count === 1) multiset.delete(val);
+        else multiset.set(val, count - 1);
+    }
+}
+
+insert(10);
+insert(10);
+eraseOne(10);</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

@@ -98,27 +98,49 @@ map.remove(1);</code></pre>
         
     </div>
 
+    
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-blue-300 mb-2">No Built-In Equivalent</h3>
-                <p class="text-sm text-slate-300">Python's built-in <code>dict</code> preserves insertion order but does NOT sort by keys. If you need a Red-Black tree map equivalent, you must rely on third-party libraries or maintain parallel structures.</p>
+                <h3 class="text-lg font-bold text-blue-300 mb-2">dict (Insertion Ordered)</h3>
+                <p class="text-sm text-slate-300">Python's <code>dict</code> is a hash map, but since Python 3.7 it perfectly preserves insertion order. If you strictly need keys to be <em>sorted</em> like <code>std::map</code>, you must sort the keys on demand or use a sorted list of tuples.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300"># 1. Standard dict (O(1) insert/lookup)
+d = {}
+d[3] = "C"
+d[1] = "A"
+d[2] = "B"
+
+# 2. Emulating std::map sorted iteration
+for k in sorted(d.keys()):
+    print(f"{k}: {d[k]}")
+# Outputs: 1: A, 2: B, 3: C</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-yellow-300 mb-2">No Built-In Equivalent</h3>
-                <p class="text-sm text-slate-300">JavaScript's built-in <code>Map</code> preserves insertion order but does NOT sort by keys. If you require O(log N) key ordering, a custom implementation is required.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Map (Insertion Ordered)</h3>
+                <p class="text-sm text-slate-300">JavaScript's <code>Map</code> is a hash map that preserves insertion order. Like Python, if you need <em>sorted</em> iteration like C++'s Red-Black tree map, you must sort the keys array manually.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const map = new Map();
+
+// Insert O(1)
+map.set(3, "C");
+map.set(1, "A");
+map.set(2, "B");
+
+// Emulating std::map sorted iteration
+const sortedKeys = Array.from(map.keys()).sort((a, b) => a - b);
+for (let k of sortedKeys) {
+    console.log(k + ": " + map.get(k));
+}</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

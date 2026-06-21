@@ -103,15 +103,34 @@ top = -max_heap[0] # 20</code></pre>
         
     </div>
 
+    
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-yellow-300 mb-2">No Built-In Equivalent</h3>
-                <p class="text-sm text-slate-300">JavaScript does not have a built-in Priority Queue. You must implement your own binary heap class or use an external library like <code>@datastructures-js/priority-queue</code>.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Custom Binary Heap / Sort</h3>
+                <p class="text-sm text-slate-300">JavaScript lacks a built-in Heap. For smaller datasets, pushing to an array and re-sorting is easy but <code>O(N log N)</code>. For performance, you must write a class.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// Easy but slow O(N log N) approach:
+let pq = [];
+pq.push(10);
+pq.push(5);
+pq.sort((a, b) => a - b); // Min-Heap simulation
+let top = pq.shift(); // 5
+
+// Fast O(log N) approach requires a full class:
+class MinHeap {
+    constructor() { this.heap = []; }
+    push(val) {
+        this.heap.push(val);
+        this._bubbleUp(this.heap.length - 1);
+    }
+    pop() {
+        // swap root with last, pop last, bubble down root
+    }
+    // ... custom bubble up / down logic
+}</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

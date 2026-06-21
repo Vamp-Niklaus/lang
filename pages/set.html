@@ -98,27 +98,60 @@ ts.remove(20);</code></pre>
         
     </div>
 
+    
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-blue-300 mb-2">No Built-In Equivalent</h3>
-                <p class="text-sm text-slate-300">Python's built-in <code>set</code> is implemented as a Hash Table, making it the equivalent of C++ <code>std::unordered_set</code>. There is no standard library sorted tree set. For sorted operations, you typically maintain a sorted list using the <code>bisect</code> module, or use third-party libraries.</p>
+                <h3 class="text-lg font-bold text-blue-300 mb-2">bisect + list / set</h3>
+                <p class="text-sm text-slate-300">Python's built-in <code>set</code> is a Hash Table (unordered). If you strictly need O(log N) bounds checking and sorted iteration like <code>std::set</code>, you maintain a sorted list using the <code>bisect</code> module.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">import bisect
+
+# 1. Unordered Uniqueness (O(1) average)
+s = set()
+s.add(30)
+s.add(10)
+
+# 2. Sorted Set Behavior (O(N) insert, O(log N) search)
+sorted_set = []
+bisect.insort(sorted_set, 30)
+bisect.insort(sorted_set, 10)
+bisect.insort(sorted_set, 20)
+# sorted_set is now [10, 20, 30]
+
+# std::set::lower_bound equivalent
+idx = bisect.bisect_left(sorted_set, 15) # Returns 1 (index where 15 would go)</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <h3 class="text-lg font-bold text-yellow-300 mb-2">No Built-In Equivalent</h3>
-                <p class="text-sm text-slate-300">JavaScript's built-in <code>Set</code> preserves insertion order but does not maintain a sorted binary tree. It acts more like a Hash Set. If you strictly require sorted set logic (lower/upper bounds, O(log N) insert), you must implement your own Red-Black Tree or AVL Tree.</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Set / Sorted Array</h3>
+                <p class="text-sm text-slate-300">JavaScript's built-in <code>Set</code> preserves insertion order but does not sort. If you need a sorted set, you typically maintain a sorted Array manually using Binary Search.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">// 1. Standard Set (O(1) insert/lookup, insertion order)
+const s = new Set();
+s.add(30);
+s.add(10);
+let exists = s.has(10); // true
+
+// 2. Sorted Array approach (for std::set equivalents)
+let sortedSet = [];
+function insertSorted(arr, val) {
+    let i = 0;
+    while (i < arr.length && arr[i] < val) i++;
+    if (arr[i] !== val) arr.splice(i, 0, val); // Insert only if unique
+}
+insertSorted(sortedSet, 30);
+insertSorted(sortedSet, 10);
+insertSorted(sortedSet, 20);
+// sortedSet is [10, 20, 30]</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>

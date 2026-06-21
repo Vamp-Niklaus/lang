@@ -62,25 +62,53 @@ for (auto it = range.first; it != range.second; ++it) {
         
     </div>
 
+    
     <!-- PYTHON TAB -->
     <div class="tab-content hidden" id="tab-python">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">N/A</p>
+                <h3 class="text-lg font-bold text-blue-300 mb-2">collections.defaultdict(list)</h3>
+                <p class="text-sm text-slate-300">The exact equivalent of a multimap in Python is mapping a Key to a List of Values using a <code>defaultdict</code>.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-python text-sm text-slate-300">from collections import defaultdict
+
+multimap = defaultdict(list)
+
+# Insert multiple values for same key
+multimap["A"].append(1)
+multimap["A"].append(2)
+multimap["B"].append(3)
+
+# Iterate over all values for key "A"
+for val in multimap["A"]:
+    print(val) # Prints 1, then 2</code></pre>
             </div>
         </div>
-        
     </div>
 
     <!-- JS TAB -->
     <div class="tab-content hidden" id="tab-js">
-
         <div class="space-y-4">
             <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                <p class="text-sm text-slate-300">N/A</p>
+                <h3 class="text-lg font-bold text-yellow-300 mb-2">Map of Arrays</h3>
+                <p class="text-sm text-slate-300">In JavaScript, a multimap is easily constructed by mapping a Key to an Array of Values.</p>
+            </div>
+            <div class="bg-slate-900 rounded-lg p-4 border border-slate-700 overflow-x-auto">
+                <pre><code class="language-javascript text-sm text-slate-300">const multimap = new Map();
+
+function insert(key, val) {
+    if (!multimap.has(key)) {
+        multimap.set(key, []);
+    }
+    multimap.get(key).push(val);
+}
+
+insert("A", 1);
+insert("A", 2);
+
+// Retrieve
+let values = multimap.get("A"); // [1, 2]</code></pre>
             </div>
         </div>
-        
-    </div>
-</section>
+    </section>
